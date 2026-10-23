@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: painting-palette-reading-app
+expected_outcome: |
+  The pinned painting is honoured: data id paint-the-milkmaid (The Milkmaid, Johannes Vermeer), labelled exactly "Sampled from The Milkmaid, Johannes Vermeer, <date> by colorcombinations.org" (plus the drift note if the data flags one for this work; values are the painting as it looks today). No candidate round and no wait.
+
+  The run infers Read mode with a Restrained strategy: the largest grounds (#d7d1bf, #c6bda9) seed the tinted neutral ramp and the page frame, the darkest ground (#0f1317 or #3c1914) is body text when contrast allows, the saturated blue (#254d83) or ochre/skin accent (#c89d7a) is the single accent, and accents stay rare. Mid-lightness members get non-text roles. It builds ramps and two-tier tokens, measures body-text contrast for long reading (WCAG 2 and APCA, reporting both) and fixes failures by lightness only with a before/after report, and composes a dark mode for late-night phone reading (own surface, text and accent steps, not an inversion; no pure black-on-white glare, no pure white text).
+
+  Files written: DESIGN.md (both acp marker regions), design/palette.json and design/tokens.css with light and dark semantic tokens, and possibly a preview HTML. It does not choose fonts, line length or spacing for the reading column; it names tokens and defers type/layout. It does not claim this is a Wada plate or an eastern palette.

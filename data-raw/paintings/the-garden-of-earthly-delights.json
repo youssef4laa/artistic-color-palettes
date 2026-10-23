@@ -1,0 +1,65 @@
+{
+  "snapshot_date": "2026-10-22",
+  "page_url": "https://colorcombinations.org/paintings/the-garden-of-earthly-delights/",
+  "json_export_source": "inline <script type=application/json data-payload=json> behind the Download JSON button (no separate URL exists)",
+  "licence": "CC BY 4.0 sampling; artwork public domain; credit colorcombinations.org",
+  "export_verbatim": {
+    "source": "https://colorcombinations.org/palettes/paintings/the-garden-of-earthly-delights/",
+    "slug": "paintings/the-garden-of-earthly-delights",
+    "title": "The Garden of Earthly Delights — Hieronymus Bosch",
+    "era": "edo",
+    "moods": [],
+    "colors": [
+      {
+        "hex": "#CFCFB2"
+      },
+      {
+        "hex": "#ACA745"
+      },
+      {
+        "hex": "#8B852A"
+      },
+      {
+        "hex": "#965020"
+      },
+      {
+        "hex": "#201E14"
+      },
+      {
+        "hex": "#090806"
+      }
+    ]
+  },
+  "swatches_from_page": [
+    {
+      "hex": "#CFCFB2",
+      "coverage_pct_text": " 6",
+      "role": "ground"
+    },
+    {
+      "hex": "#ACA745",
+      "coverage_pct_text": " 5",
+      "role": "accent"
+    },
+    {
+      "hex": "#8B852A",
+      "coverage_pct_text": " 5",
+      "role": "accent"
+    },
+    {
+      "hex": "#965020",
+      "coverage_pct_text": " 1",
+      "role": "accent"
+    },
+    {
+      "hex": "#201E14",
+      "coverage_pct_text": " 6",
+      "role": "ground"
+    },
+    {
+      "hex": "#090806",
+      "coverage_pct_text": " 13",
+      "role": "ground"
+    }
+  ]
+}

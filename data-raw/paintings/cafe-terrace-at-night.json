@@ -1,0 +1,65 @@
+{
+  "snapshot_date": "2026-10-22",
+  "page_url": "https://colorcombinations.org/paintings/cafe-terrace-at-night/",
+  "json_export_source": "inline <script type=application/json data-payload=json> behind the Download JSON button (no separate URL exists)",
+  "licence": "CC BY 4.0 sampling; artwork public domain; credit colorcombinations.org",
+  "export_verbatim": {
+    "source": "https://colorcombinations.org/palettes/paintings/cafe-terrace-at-night/",
+    "slug": "paintings/cafe-terrace-at-night",
+    "title": "Café Terrace at Night — Vincent van Gogh",
+    "era": "edo",
+    "moods": [],
+    "colors": [
+      {
+        "hex": "#DBCA45"
+      },
+      {
+        "hex": "#C8B547"
+      },
+      {
+        "hex": "#6F80A9"
+      },
+      {
+        "hex": "#AD662A"
+      },
+      {
+        "hex": "#403E43"
+      },
+      {
+        "hex": "#312E2C"
+      }
+    ]
+  },
+  "swatches_from_page": [
+    {
+      "hex": "#DBCA45",
+      "coverage_pct_text": " 3",
+      "role": "accent"
+    },
+    {
+      "hex": "#C8B547",
+      "coverage_pct_text": " 6",
+      "role": "ground"
+    },
+    {
+      "hex": "#6F80A9",
+      "coverage_pct_text": " 6",
+      "role": "accent"
+    },
+    {
+      "hex": "#AD662A",
+      "coverage_pct_text": " 4",
+      "role": "accent"
+    },
+    {
+      "hex": "#403E43",
+      "coverage_pct_text": " 6",
+      "role": "ground"
+    },
+    {
+      "hex": "#312E2C",
+      "coverage_pct_text": " 13",
+      "role": "ground"
+    }
+  ]
+}

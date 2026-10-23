@@ -1,0 +1,65 @@
+{
+  "snapshot_date": "2026-10-22",
+  "page_url": "https://colorcombinations.org/paintings/the-hay-wain/",
+  "json_export_source": "inline <script type=application/json data-payload=json> behind the Download JSON button (no separate URL exists)",
+  "licence": "CC BY 4.0 sampling; artwork public domain; credit colorcombinations.org",
+  "export_verbatim": {
+    "source": "https://colorcombinations.org/palettes/paintings/the-hay-wain/",
+    "slug": "paintings/the-hay-wain",
+    "title": "The Hay Wain — John Constable",
+    "era": "edo",
+    "moods": [],
+    "colors": [
+      {
+        "hex": "#768BAC"
+      },
+      {
+        "hex": "#605E57"
+      },
+      {
+        "hex": "#4C4939"
+      },
+      {
+        "hex": "#584127"
+      },
+      {
+        "hex": "#333524"
+      },
+      {
+        "hex": "#2F211D"
+      }
+    ]
+  },
+  "swatches_from_page": [
+    {
+      "hex": "#768BAC",
+      "coverage_pct_text": " 3",
+      "role": "accent"
+    },
+    {
+      "hex": "#605E57",
+      "coverage_pct_text": " 6",
+      "role": "ground"
+    },
+    {
+      "hex": "#4C4939",
+      "coverage_pct_text": " 6",
+      "role": "ground"
+    },
+    {
+      "hex": "#584127",
+      "coverage_pct_text": " 4",
+      "role": "accent"
+    },
+    {
+      "hex": "#333524",
+      "coverage_pct_text": " 7",
+      "role": "ground"
+    },
+    {
+      "hex": "#2F211D",
+      "coverage_pct_text": " 4",
+      "role": "accent"
+    }
+  ]
+}

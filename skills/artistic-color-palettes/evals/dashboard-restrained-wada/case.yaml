@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: dashboard-restrained-wada
+expected_outcome: |
+  No palette is pinned, so the run shows candidates and stops for the user's choice: no files are written (no DESIGN.md, design/palette.json, design/tokens.css or preview file).
+
+  A good result infers an Operate surface with a Restrained strategy (low-light control room, long shifts) and searches the bundled data with filters (calm moods such as serene/austere/solemn, 2-3 colours, probably cool or earthy hues). It presents 3 to 5 candidates, each labelled exactly as "Wada plate N (*A Dictionary of Color Combinations*, 1933)" with real plate numbers that exist in data/palettes.csv (1-348), hex and OKLCH per colour, the tone pattern, the suited strategy, one line on fit for dispatch tables/map/status chips, and a known trap (mid-lightness members, vibrating pairs). Candidates are shown as applied mini-layouts in light and dark (not bare swatches) or at least described in terms of surface roles. It may mention that status colours (on time / delayed / held) will be derived from the palette and checked for contrast and colour-vision-deficiency safety.
+
+  It then explicitly asks the user which candidate to use (or whether to refine the search) and stops. It does not pick one silently, does not proceed on "any of these", does not invent plate numbers, and does not add a generic blue-and-grey fallback.

@@ -1,0 +1,65 @@
+{
+  "snapshot_date": "2026-10-22",
+  "page_url": "https://colorcombinations.org/paintings/the-childs-bath/",
+  "json_export_source": "inline <script type=application/json data-payload=json> behind the Download JSON button (no separate URL exists)",
+  "licence": "CC BY 4.0 sampling; artwork public domain; credit colorcombinations.org",
+  "export_verbatim": {
+    "source": "https://colorcombinations.org/palettes/paintings/the-childs-bath/",
+    "slug": "paintings/the-childs-bath",
+    "title": "The Child's Bath — Mary Cassatt",
+    "era": "edo",
+    "moods": [],
+    "colors": [
+      {
+        "hex": "#98A3AD"
+      },
+      {
+        "hex": "#56686F"
+      },
+      {
+        "hex": "#636449"
+      },
+      {
+        "hex": "#4C5345"
+      },
+      {
+        "hex": "#673928"
+      },
+      {
+        "hex": "#283B51"
+      }
+    ]
+  },
+  "swatches_from_page": [
+    {
+      "hex": "#98A3AD",
+      "coverage_pct_text": " 7",
+      "role": "ground"
+    },
+    {
+      "hex": "#56686F",
+      "coverage_pct_text": " 4",
+      "role": "accent"
+    },
+    {
+      "hex": "#636449",
+      "coverage_pct_text": " 7",
+      "role": "ground"
+    },
+    {
+      "hex": "#4C5345",
+      "coverage_pct_text": " 5",
+      "role": "ground"
+    },
+    {
+      "hex": "#673928",
+      "coverage_pct_text": " 4",
+      "role": "accent"
+    },
+    {
+      "hex": "#283B51",
+      "coverage_pct_text": " 2",
+      "role": "accent"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "snapshot_date": "2026-10-22",
+  "page_url": "https://colorcombinations.org/paintings/the-starry-night/",
+  "json_export_source": "inline <script type=application/json data-payload=json> behind the Download JSON button (no separate URL exists)",
+  "licence": "CC BY 4.0 sampling; artwork public domain; credit colorcombinations.org",
+  "export_verbatim": {
+    "source": "https://colorcombinations.org/palettes/paintings/the-starry-night/",
+    "slug": "paintings/the-starry-night",
+    "title": "The Starry Night — Vincent van Gogh",
+    "era": "edo",
+    "moods": [],
+    "colors": [
+      {
+        "hex": "#B19E2D"
+      },
+      {
+        "hex": "#5272A1"
+      },
+      {
+        "hex": "#344B91"
+      },
+      {
+        "hex": "#28378D"
+      },
+      {
+        "hex": "#272822"
+      },
+      {
+        "hex": "#151919"
+      }
+    ]
+  },
+  "swatches_from_page": [
+    {
+      "hex": "#B19E2D",
+      "coverage_pct_text": "<1",
+      "role": "accent"
+    },
+    {
+      "hex": "#5272A1",
+      "coverage_pct_text": " 6",
+      "role": "ground"
+    },
+    {
+      "hex": "#344B91",
+      "coverage_pct_text": " 4",
+      "role": "accent"
+    },
+    {
+      "hex": "#28378D",
+      "coverage_pct_text": " 3",
+      "role": "accent"
+    },
+    {
+      "hex": "#272822",
+      "coverage_pct_text": " 6",
+      "role": "ground"
+    },
+    {
+      "hex": "#151919",
+      "coverage_pct_text": " 8",
+      "role": "ground"
+    }
+  ]
+}

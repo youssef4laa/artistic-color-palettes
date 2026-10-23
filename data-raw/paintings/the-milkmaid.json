@@ -1,0 +1,65 @@
+{
+  "snapshot_date": "2026-10-22",
+  "page_url": "https://colorcombinations.org/paintings/the-milkmaid/",
+  "json_export_source": "inline <script type=application/json data-payload=json> behind the Download JSON button (no separate URL exists)",
+  "licence": "CC BY 4.0 sampling; artwork public domain; credit colorcombinations.org",
+  "export_verbatim": {
+    "source": "https://colorcombinations.org/palettes/paintings/the-milkmaid/",
+    "slug": "paintings/the-milkmaid",
+    "title": "The Milkmaid — Johannes Vermeer",
+    "era": "edo",
+    "moods": [],
+    "colors": [
+      {
+        "hex": "#D7D1BF"
+      },
+      {
+        "hex": "#C6BDA9"
+      },
+      {
+        "hex": "#C89D7A"
+      },
+      {
+        "hex": "#254D83"
+      },
+      {
+        "hex": "#3C1914"
+      },
+      {
+        "hex": "#0F1317"
+      }
+    ]
+  },
+  "swatches_from_page": [
+    {
+      "hex": "#D7D1BF",
+      "coverage_pct_text": " 19",
+      "role": "ground"
+    },
+    {
+      "hex": "#C6BDA9",
+      "coverage_pct_text": " 8",
+      "role": "ground"
+    },
+    {
+      "hex": "#C89D7A",
+      "coverage_pct_text": "<1",
+      "role": "accent"
+    },
+    {
+      "hex": "#254D83",
+      "coverage_pct_text": "<1",
+      "role": "accent"
+    },
+    {
+      "hex": "#3C1914",
+      "coverage_pct_text": " 2",
+      "role": "accent"
+    },
+    {
+      "hex": "#0F1317",
+      "coverage_pct_text": " 8",
+      "role": "ground"
+    }
+  ]
+}

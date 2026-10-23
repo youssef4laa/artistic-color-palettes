@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Settings - Fieldbook</title>
+<style>
+  body { margin: 0; font-family: Arial, sans-serif; background: #f5f5f5; color: #222; }
+  main { max-width: 640px; margin: 0 auto; padding: 24px 16px; }
+  h1 { font-size: 24px; }
+  section { background: #fff; border: 1px solid #ddd; border-radius: 6px; padding: 16px; margin-bottom: 16px; }
+  label { display: block; margin: 12px 0 4px; font-size: 14px; }
+  input[type=text], input[type=email] { width: 100%; padding: 8px; border: 1px solid #bbb; border-radius: 4px; font-size: 16px; }
+  button { padding: 10px 16px; border: 0; border-radius: 4px; background: #3b82f6; color: #fff; font-size: 16px; cursor: pointer; }
+  button.danger { background: #dc2626; }
+  .hint { color: #888; font-size: 13px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Settings</h1>
+
+  <section>
+    <h2>Profile</h2>
+    <label for="name">Farm name</label>
+    <input id="name" type="text" value="Hollin Bank Farm">
+    <label for="email">Email</label>
+    <input id="email" type="email" value="sam@hollinbank.example">
+    <p class="hint">Used on exported spray records.</p>
+    <button>Save profile</button>
+  </section>
+
+  <section>
+    <h2>Notifications</h2>
+    <label><input type="checkbox" checked> Spray-interval reminders</label>
+    <label><input type="checkbox" checked> Harvest tally summary (weekly)</label>
+    <label><input type="checkbox"> Product updates</label>
+    <p class="hint">Reminders also arrive by SMS if a number is set.</p>
+    <button>Save preferences</button>
+  </section>
+
+  <section>
+    <h2>Export</h2>
+    <p>Download all records as PDF or CSV.</p>
+    <button>Export records</button>
+  </section>
+
+  <section>
+    <h2>Delete account</h2>
+    <p>This permanently removes your farm and all records. This cannot be undone.</p>
+    <button class="danger">Delete account</button>
+  </section>
+</main>
+</body>
+</html>

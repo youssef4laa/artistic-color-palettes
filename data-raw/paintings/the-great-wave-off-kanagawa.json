@@ -1,0 +1,65 @@
+{
+  "snapshot_date": "2026-10-22",
+  "page_url": "https://colorcombinations.org/paintings/the-great-wave-off-kanagawa/",
+  "json_export_source": "inline <script type=application/json data-payload=json> behind the Download JSON button (no separate URL exists)",
+  "licence": "CC BY 4.0 sampling; artwork public domain; credit colorcombinations.org",
+  "export_verbatim": {
+    "source": "https://colorcombinations.org/palettes/paintings/the-great-wave-off-kanagawa/",
+    "slug": "paintings/the-great-wave-off-kanagawa",
+    "title": "Under the Wave off Kanagawa (The Great Wave) — Katsushika Hokusai",
+    "era": "edo",
+    "moods": [],
+    "colors": [
+      {
+        "hex": "#F6EFD9"
+      },
+      {
+        "hex": "#F8EAC7"
+      },
+      {
+        "hex": "#DCE7D9"
+      },
+      {
+        "hex": "#E5B696"
+      },
+      {
+        "hex": "#2C638C"
+      },
+      {
+        "hex": "#223F63"
+      }
+    ]
+  },
+  "swatches_from_page": [
+    {
+      "hex": "#F6EFD9",
+      "coverage_pct_text": " 34",
+      "role": "ground"
+    },
+    {
+      "hex": "#F8EAC7",
+      "coverage_pct_text": " 17",
+      "role": "ground"
+    },
+    {
+      "hex": "#DCE7D9",
+      "coverage_pct_text": " 5",
+      "role": "ground"
+    },
+    {
+      "hex": "#E5B696",
+      "coverage_pct_text": "<1",
+      "role": "accent"
+    },
+    {
+      "hex": "#2C638C",
+      "coverage_pct_text": " 2",
+      "role": "accent"
+    },
+    {
+      "hex": "#223F63",
+      "coverage_pct_text": " 3",
+      "role": "accent"
+    }
+  ]
+}

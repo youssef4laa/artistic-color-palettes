@@ -1,0 +1,65 @@
+{
+  "snapshot_date": "2026-10-22",
+  "page_url": "https://colorcombinations.org/paintings/a-sunday-on-la-grande-jatte/",
+  "json_export_source": "inline <script type=application/json data-payload=json> behind the Download JSON button (no separate URL exists)",
+  "licence": "CC BY 4.0 sampling; artwork public domain; credit colorcombinations.org",
+  "export_verbatim": {
+    "source": "https://colorcombinations.org/palettes/paintings/a-sunday-on-la-grande-jatte/",
+    "slug": "paintings/a-sunday-on-la-grande-jatte",
+    "title": "A Sunday on La Grande Jatte — Georges Seurat",
+    "era": "edo",
+    "moods": [],
+    "colors": [
+      {
+        "hex": "#BEB356"
+      },
+      {
+        "hex": "#B88862"
+      },
+      {
+        "hex": "#AB594B"
+      },
+      {
+        "hex": "#50526E"
+      },
+      {
+        "hex": "#3F3D49"
+      },
+      {
+        "hex": "#304235"
+      }
+    ]
+  },
+  "swatches_from_page": [
+    {
+      "hex": "#BEB356",
+      "coverage_pct_text": " 5",
+      "role": "accent"
+    },
+    {
+      "hex": "#B88862",
+      "coverage_pct_text": " 2",
+      "role": "accent"
+    },
+    {
+      "hex": "#AB594B",
+      "coverage_pct_text": " 1",
+      "role": "accent"
+    },
+    {
+      "hex": "#50526E",
+      "coverage_pct_text": " 5",
+      "role": "ground"
+    },
+    {
+      "hex": "#3F3D49",
+      "coverage_pct_text": " 7",
+      "role": "ground"
+    },
+    {
+      "hex": "#304235",
+      "coverage_pct_text": " 8",
+      "role": "ground"
+    }
+  ]
+}

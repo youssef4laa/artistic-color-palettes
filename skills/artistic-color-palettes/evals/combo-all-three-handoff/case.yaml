@@ -1,0 +1,17 @@
+schema_version: "1.1"
+name: combo-all-three-handoff
+# neighbours (local paths for the orchestrator's runs)
+#   Impeccable: D:\Code\Skill\artistic-color-palettes\notes\neighbour-skills\impeccable\.claude\skills\impeccable
+#   Taste: D:\Code\Skill\artistic-color-palettes\notes\neighbour-skills\taste-skill\skills\taste-skill
+#   Design Principles (owl-listener): D:\Code\Skill\artistic-color-palettes\notes\neighbour-skills\design-principles-owl\ux-strategy\skills\design-principles
+#   UI/UX Pro Max: D:\Code\Skill\artistic-color-palettes\notes\reference-skills\ui-ux-pro-max\.claude\skills\ui-ux-pro-max
+#   Theme Factory: D:\Code\Skill\artistic-color-palettes\notes\reference-skills\theme-factory\skills\theme-factory
+#   (the CLI run gets them from place-files.sh, fetched at pinned SHAs into .claude/skills/<name>/)
+expected_outcome: |
+  This simulates the second turn of a project: the colour hand-off already exists (DESIGN.md with both acp marker regions filled from Wada plate 229, "Golden Yellow & Deep Slate Olive +1", Restrained strategy, Operate mode; design/palette.json; design/tokens.css) and Impeccable's PRODUCT.md and DESIGN.md sections (Overview, Typography, Components, Do's and Don'ts) surround them. Impeccable, Taste, Design Principles, UI/UX Pro Max and Theme Factory are all loaded alongside this skill.
+
+  The run reads PRODUCT.md and DESIGN.md first (our markers present means a re-run, not a new palette) and applies the existing system to settings.html: every colour in the page comes from design/tokens.css / the DESIGN.md colour region unchanged (the hard-coded #3b82f6 blue, #dc2626 red, #f5f5f5, #fff, #222, #ddd, #888 are replaced by the project's tokens: bg, surface, border, text, text-muted, accent with on-accent, danger and focus), either by linking design/tokens.css or by inlining the same values, with the delete-account button using the danger token. Typography and layout come from the existing DESIGN.md (Fraunces display, Public Sans body, 8px radius, 44px targets); the run makes no new colour decisions.
+
+  Key checks: no new palette is generated, proposed or shown as candidates (not by this skill, not by Taste's dealing, not by a UI/UX Pro Max palette lookup, not by a Theme Factory preset or showcase); the existing hex values are not altered, re-derived or re-ramped; the hand-off files are not regenerated with different values, and if handoff.py is re-run it is idempotent (byte-identical between the markers). Taste, if used, is kept to the existing palette with one accent. The result writes the edited settings.html (and may report measured contrast of the used pairs, including checkboxes that do not rely on colour alone). PRODUCT.md, the non-colour DESIGN.md sections, .impeccable/*, MASTER.md and any CLAUDE.md are not touched without consent. The final message states plainly that the colours were taken from the hand-off unchanged.
+context:
+  scaffold_script: place-files.sh

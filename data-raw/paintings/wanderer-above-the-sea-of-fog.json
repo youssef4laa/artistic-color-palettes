@@ -1,0 +1,65 @@
+{
+  "snapshot_date": "2026-10-22",
+  "page_url": "https://colorcombinations.org/paintings/wanderer-above-the-sea-of-fog/",
+  "json_export_source": "inline <script type=application/json data-payload=json> behind the Download JSON button (no separate URL exists)",
+  "licence": "CC BY 4.0 sampling; artwork public domain; credit colorcombinations.org",
+  "export_verbatim": {
+    "source": "https://colorcombinations.org/palettes/paintings/wanderer-above-the-sea-of-fog/",
+    "slug": "paintings/wanderer-above-the-sea-of-fog",
+    "title": "Wanderer above the Sea of Fog — Caspar David Friedrich",
+    "era": "edo",
+    "moods": [],
+    "colors": [
+      {
+        "hex": "#CED3E4"
+      },
+      {
+        "hex": "#BDC0CC"
+      },
+      {
+        "hex": "#939CA9"
+      },
+      {
+        "hex": "#8B7763"
+      },
+      {
+        "hex": "#64707B"
+      },
+      {
+        "hex": "#0E0C12"
+      }
+    ]
+  },
+  "swatches_from_page": [
+    {
+      "hex": "#CED3E4",
+      "coverage_pct_text": " 24",
+      "role": "ground"
+    },
+    {
+      "hex": "#BDC0CC",
+      "coverage_pct_text": " 20",
+      "role": "ground"
+    },
+    {
+      "hex": "#939CA9",
+      "coverage_pct_text": " 3",
+      "role": "accent"
+    },
+    {
+      "hex": "#8B7763",
+      "coverage_pct_text": "<1",
+      "role": "accent"
+    },
+    {
+      "hex": "#64707B",
+      "coverage_pct_text": " 2",
+      "role": "accent"
+    },
+    {
+      "hex": "#0E0C12",
+      "coverage_pct_text": " 17",
+      "role": "ground"
+    }
+  ]
+}

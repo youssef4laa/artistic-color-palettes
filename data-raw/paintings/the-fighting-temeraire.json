@@ -1,0 +1,65 @@
+{
+  "snapshot_date": "2026-10-22",
+  "page_url": "https://colorcombinations.org/paintings/the-fighting-temeraire/",
+  "json_export_source": "inline <script type=application/json data-payload=json> behind the Download JSON button (no separate URL exists)",
+  "licence": "CC BY 4.0 sampling; artwork public domain; credit colorcombinations.org",
+  "export_verbatim": {
+    "source": "https://colorcombinations.org/palettes/paintings/the-fighting-temeraire/",
+    "slug": "paintings/the-fighting-temeraire",
+    "title": "The Fighting Temeraire — J. M. W. Turner",
+    "era": "edo",
+    "moods": [],
+    "colors": [
+      {
+        "hex": "#AEA693"
+      },
+      {
+        "hex": "#909AA5"
+      },
+      {
+        "hex": "#918572"
+      },
+      {
+        "hex": "#938367"
+      },
+      {
+        "hex": "#96763E"
+      },
+      {
+        "hex": "#825C33"
+      }
+    ]
+  },
+  "swatches_from_page": [
+    {
+      "hex": "#AEA693",
+      "coverage_pct_text": " 6",
+      "role": "ground"
+    },
+    {
+      "hex": "#909AA5",
+      "coverage_pct_text": " 3",
+      "role": "accent"
+    },
+    {
+      "hex": "#918572",
+      "coverage_pct_text": " 8",
+      "role": "ground"
+    },
+    {
+      "hex": "#938367",
+      "coverage_pct_text": " 15",
+      "role": "ground"
+    },
+    {
+      "hex": "#96763E",
+      "coverage_pct_text": " 2",
+      "role": "accent"
+    },
+    {
+      "hex": "#825C33",
+      "coverage_pct_text": " 2",
+      "role": "accent"
+    }
+  ]
+}

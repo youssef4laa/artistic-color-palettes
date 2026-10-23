@@ -1,0 +1,14 @@
+# Copyrighted book material and third-party clones: local working files only, never published
+notes/_private/
+notes/wada-pages/
+notes/reference-skills/
+notes/neighbour-skills/
+# skill-creator workspaces
+*-workspace/
+dist/
+__pycache__/
+*.pyc
+# Any page render of the Wada scan, wherever an agent wrote it
+**/wada-pages/
+data-raw/**/*.png
+data-raw/**/*.jpg

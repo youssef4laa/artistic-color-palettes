@@ -1,0 +1,13 @@
+schema_version: "1.1"
+name: combo-design-principles-libreuiux
+# neighbours (local paths for the orchestrator's runs)
+#   Design Principles (libreuiux): D:\Code\Skill\artistic-color-palettes\notes\neighbour-skills\design-principles-libreuiux\plugins\design-mastery\skills\design-principles
+#   (the CLI run gets them from place-files.sh, fetched at pinned SHAs into .claude/skills/<name>/)
+expected_outcome: |
+  Design Principles (libreuiux variant, which teaches 60-30-10 and harmony-wheel schemes) and this skill are both loaded. The run honours the user's intent (a three-colour scheme from Wada) while correcting the premise: Wada plates are not chosen or judged by colour-wheel geometry, a plate's authority is the plate itself, so there is no "triadic" flag in the data. It translates "triadic" into what the data can answer: three-colour plates (the trio range, plates 121-240, found with the colour-count filter) and explains the same-tone versus different-tone classification (same-tone trios suit a Restrained strategy, different-tone trios suit Full palette).
+
+  It also explains that its proportion tiers supersede 60-30-10: Restrained 85-95% ground and neutrals with 2-8% accent, Committed one palette colour 30-60%, Full palette 45-65% ground with secondary 15-30% and tertiary 5-15%, Drenched 60-90% palette surface; the accent area ceiling (8%) holds in every tier. The surface mode is inferred (a co-op marketing site plus newsletter, Persuade leaning Committed or Full palette) and said.
+
+  No palette is pinned, so the run shows 3 to 5 trio candidates (labelled "Wada plate N (*A Dictionary of Color Combinations*, 1933)" with real plate ids from data/palettes.csv, hex and OKLCH, tone pattern, suited strategy, one fit line for a farmers-market brand, known trap), each with its proportion targets, and stops to ask which the user wants. It does not claim any plate is triadic by geometry, does not run a wheel-based palette generator, does not leave the user with 60-30-10 as the rule, does not touch the .libreui-config.yaml colour enums, and does not invent plates. No files are written.
+context:
+  scaffold_script: place-files.sh

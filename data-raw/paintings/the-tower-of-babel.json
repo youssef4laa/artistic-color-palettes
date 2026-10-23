@@ -1,0 +1,65 @@
+{
+  "snapshot_date": "2026-10-22",
+  "page_url": "https://colorcombinations.org/paintings/the-tower-of-babel/",
+  "json_export_source": "inline <script type=application/json data-payload=json> behind the Download JSON button (no separate URL exists)",
+  "licence": "CC BY 4.0 sampling; artwork public domain; credit colorcombinations.org",
+  "export_verbatim": {
+    "source": "https://colorcombinations.org/palettes/paintings/the-tower-of-babel/",
+    "slug": "paintings/the-tower-of-babel",
+    "title": "The Tower of Babel — Pieter Bruegel the Elder",
+    "era": "edo",
+    "moods": [],
+    "colors": [
+      {
+        "hex": "#EDE5CD"
+      },
+      {
+        "hex": "#D9D8CB"
+      },
+      {
+        "hex": "#C69B3E"
+      },
+      {
+        "hex": "#BA6E3A"
+      },
+      {
+        "hex": "#7C8357"
+      },
+      {
+        "hex": "#964921"
+      }
+    ]
+  },
+  "swatches_from_page": [
+    {
+      "hex": "#EDE5CD",
+      "coverage_pct_text": " 8",
+      "role": "ground"
+    },
+    {
+      "hex": "#D9D8CB",
+      "coverage_pct_text": " 8",
+      "role": "ground"
+    },
+    {
+      "hex": "#C69B3E",
+      "coverage_pct_text": " 1",
+      "role": "accent"
+    },
+    {
+      "hex": "#BA6E3A",
+      "coverage_pct_text": " 2",
+      "role": "accent"
+    },
+    {
+      "hex": "#7C8357",
+      "coverage_pct_text": " 6",
+      "role": "ground"
+    },
+    {
+      "hex": "#964921",
+      "coverage_pct_text": " 2",
+      "role": "accent"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: pinned-plate-with-contrast-fix
+expected_outcome: |
+  The pinned plate is kept: data id wada-131 (Raw Sienna #BB7125, English Red #D96629, Peacock Blue #00939B), labelled "Wada plate 131 (*A Dictionary of Color Combinations*, 1933)". No candidate round, no substitution of a different plate, no new hues invented. The three members are mid-lightness (OKLCH L about 0.60-0.64), so white text on them fails WCAG 2 AA at normal size (about 3.4-3.9:1 against the 4.5:1 floor).
+
+  The run treats white button text as a hard constraint and fixes contrast by moving ramp steps (lightness only, hue and chroma preserved): the accent used behind white text is darkened to the step that passes 4.5:1 (and the APCA Lc is reported), with hover/active steps adjusted consistently. It reports each move with the before and after values and the reason, and states that the raw plate hexes remain available as primitives or non-text roles (large marks, icons, borders, illustration) where mid-lightness is acceptable, rather than silently substituting. Because the user pinned the palette, the run says so plainly when it moves a pinned value.
+
+  Files written: DESIGN.md (acp marker regions, including an Adjustments section with before/after and a "do not change without re-validating" note), design/palette.json and design/tokens.css (primitives, semantic tokens, dark scope; the app is light by default so dark mode exists but is secondary). The final message lists measured contrast (WCAG 2 ratio and APCA Lc) for text/surface pairs including on-accent, and flags remaining risks (for example Raw Sienna vs English Red adjacency, or red-green CVD confusion if status colours are derived).

@@ -1,0 +1,65 @@
+{
+  "snapshot_date": "2026-10-22",
+  "page_url": "https://colorcombinations.org/paintings/the-night-watch/",
+  "json_export_source": "inline <script type=application/json data-payload=json> behind the Download JSON button (no separate URL exists)",
+  "licence": "CC BY 4.0 sampling; artwork public domain; credit colorcombinations.org",
+  "export_verbatim": {
+    "source": "https://colorcombinations.org/palettes/paintings/the-night-watch/",
+    "slug": "paintings/the-night-watch",
+    "title": "The Night Watch — Rembrandt van Rijn",
+    "era": "edo",
+    "moods": [],
+    "colors": [
+      {
+        "hex": "#84673B"
+      },
+      {
+        "hex": "#70532B"
+      },
+      {
+        "hex": "#65341A"
+      },
+      {
+        "hex": "#302313"
+      },
+      {
+        "hex": "#221910"
+      },
+      {
+        "hex": "#16120E"
+      }
+    ]
+  },
+  "swatches_from_page": [
+    {
+      "hex": "#84673B",
+      "coverage_pct_text": " 1",
+      "role": "accent"
+    },
+    {
+      "hex": "#70532B",
+      "coverage_pct_text": " 2",
+      "role": "accent"
+    },
+    {
+      "hex": "#65341A",
+      "coverage_pct_text": "<1",
+      "role": "accent"
+    },
+    {
+      "hex": "#302313",
+      "coverage_pct_text": " 18",
+      "role": "ground"
+    },
+    {
+      "hex": "#221910",
+      "coverage_pct_text": " 27",
+      "role": "ground"
+    },
+    {
+      "hex": "#16120E",
+      "coverage_pct_text": " 27",
+      "role": "ground"
+    }
+  ]
+}

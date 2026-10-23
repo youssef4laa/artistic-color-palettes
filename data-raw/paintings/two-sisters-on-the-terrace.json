@@ -1,0 +1,65 @@
+{
+  "snapshot_date": "2026-10-22",
+  "page_url": "https://colorcombinations.org/paintings/two-sisters-on-the-terrace/",
+  "json_export_source": "inline <script type=application/json data-payload=json> behind the Download JSON button (no separate URL exists)",
+  "licence": "CC BY 4.0 sampling; artwork public domain; credit colorcombinations.org",
+  "export_verbatim": {
+    "source": "https://colorcombinations.org/palettes/paintings/two-sisters-on-the-terrace/",
+    "slug": "paintings/two-sisters-on-the-terrace",
+    "title": "Two Sisters (On the Terrace) — Pierre-Auguste Renoir",
+    "era": "edo",
+    "moods": [],
+    "colors": [
+      {
+        "hex": "#798483"
+      },
+      {
+        "hex": "#77786A"
+      },
+      {
+        "hex": "#5C6261"
+      },
+      {
+        "hex": "#A03E23"
+      },
+      {
+        "hex": "#305651"
+      },
+      {
+        "hex": "#08467E"
+      }
+    ]
+  },
+  "swatches_from_page": [
+    {
+      "hex": "#798483",
+      "coverage_pct_text": " 7",
+      "role": "ground"
+    },
+    {
+      "hex": "#77786A",
+      "coverage_pct_text": " 6",
+      "role": "ground"
+    },
+    {
+      "hex": "#5C6261",
+      "coverage_pct_text": " 7",
+      "role": "ground"
+    },
+    {
+      "hex": "#A03E23",
+      "coverage_pct_text": " 2",
+      "role": "accent"
+    },
+    {
+      "hex": "#305651",
+      "coverage_pct_text": " 5",
+      "role": "accent"
+    },
+    {
+      "hex": "#08467E",
+      "coverage_pct_text": "<1",
+      "role": "accent"
+    }
+  ]
+}

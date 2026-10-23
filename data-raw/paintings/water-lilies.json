@@ -1,0 +1,65 @@
+{
+  "snapshot_date": "2026-10-22",
+  "page_url": "https://colorcombinations.org/paintings/water-lilies/",
+  "json_export_source": "inline <script type=application/json data-payload=json> behind the Download JSON button (no separate URL exists)",
+  "licence": "CC BY 4.0 sampling; artwork public domain; credit colorcombinations.org",
+  "export_verbatim": {
+    "source": "https://colorcombinations.org/palettes/paintings/water-lilies/",
+    "slug": "paintings/water-lilies",
+    "title": "Water Lilies — Claude Monet",
+    "era": "edo",
+    "moods": [],
+    "colors": [
+      {
+        "hex": "#A77E79"
+      },
+      {
+        "hex": "#5F935C"
+      },
+      {
+        "hex": "#5086A6"
+      },
+      {
+        "hex": "#547987"
+      },
+      {
+        "hex": "#696E8F"
+      },
+      {
+        "hex": "#4A6F8D"
+      }
+    ]
+  },
+  "swatches_from_page": [
+    {
+      "hex": "#A77E79",
+      "coverage_pct_text": "<1",
+      "role": "accent"
+    },
+    {
+      "hex": "#5F935C",
+      "coverage_pct_text": "<1",
+      "role": "accent"
+    },
+    {
+      "hex": "#5086A6",
+      "coverage_pct_text": " 7",
+      "role": "ground"
+    },
+    {
+      "hex": "#547987",
+      "coverage_pct_text": " 7",
+      "role": "ground"
+    },
+    {
+      "hex": "#696E8F",
+      "coverage_pct_text": " 3",
+      "role": "accent"
+    },
+    {
+      "hex": "#4A6F8D",
+      "coverage_pct_text": " 7",
+      "role": "ground"
+    }
+  ]
+}

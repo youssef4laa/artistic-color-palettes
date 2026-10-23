@@ -1,0 +1,65 @@
+{
+  "snapshot_date": "2026-10-22",
+  "page_url": "https://colorcombinations.org/paintings/the-bedroom/",
+  "json_export_source": "inline <script type=application/json data-payload=json> behind the Download JSON button (no separate URL exists)",
+  "licence": "CC BY 4.0 sampling; artwork public domain; credit colorcombinations.org",
+  "export_verbatim": {
+    "source": "https://colorcombinations.org/palettes/paintings/the-bedroom/",
+    "slug": "paintings/the-bedroom",
+    "title": "The Bedroom — Vincent van Gogh",
+    "era": "edo",
+    "moods": [],
+    "colors": [
+      {
+        "hex": "#A3AA99"
+      },
+      {
+        "hex": "#8C9C9E"
+      },
+      {
+        "hex": "#A88F14"
+      },
+      {
+        "hex": "#A2810C"
+      },
+      {
+        "hex": "#997610"
+      },
+      {
+        "hex": "#712B11"
+      }
+    ]
+  },
+  "swatches_from_page": [
+    {
+      "hex": "#A3AA99",
+      "coverage_pct_text": " 8",
+      "role": "ground"
+    },
+    {
+      "hex": "#8C9C9E",
+      "coverage_pct_text": " 9",
+      "role": "ground"
+    },
+    {
+      "hex": "#A88F14",
+      "coverage_pct_text": " 3",
+      "role": "accent"
+    },
+    {
+      "hex": "#A2810C",
+      "coverage_pct_text": " 8",
+      "role": "ground"
+    },
+    {
+      "hex": "#997610",
+      "coverage_pct_text": " 6",
+      "role": "accent"
+    },
+    {
+      "hex": "#712B11",
+      "coverage_pct_text": " 1",
+      "role": "accent"
+    }
+  ]
+}

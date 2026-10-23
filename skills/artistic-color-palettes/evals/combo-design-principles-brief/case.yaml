@@ -1,0 +1,13 @@
+schema_version: "1.1"
+name: combo-design-principles-brief
+# neighbours (local paths for the orchestrator's runs)
+#   Design Principles (owl-listener): D:\Code\Skill\artistic-color-palettes\notes\neighbour-skills\design-principles-owl\ux-strategy\skills\design-principles
+#   (the CLI run gets them from place-files.sh, fetched at pinned SHAs into .claude/skills/<name>/)
+expected_outcome: |
+  The Design Principles skill (owl-listener variant, a process skill with no colour content) and this skill are both loaded. The run reads design-principles.md first and treats principle 1 ("Calm over clever": no saturated colour behind running text or labels; saturated colour only for lines, icons, focus rings and small marks; buttons are tinted fills with dark ink) as a constraint that outranks this skill's colour rules, as the interop contract says: the team principle wins and the run says which colour rule bent.
+
+  The pinned plate is honoured: data id wada-143 (Blue #006EB8, Lilac #B984AF, Warm Gray #A1A39A; "Wada plate 143 (*A Dictionary of Color Combinations*, 1933)"). No candidate round. A good result: Restrained strategy on an Operate-style booking surface; the saturated blue is not used as a fill behind text (no solid blue buttons with white text); the blue appears as links, focus ring, icons and lines, and buttons use a tinted fill with dark ink from the palette's neutral and tinted steps; the lilac stays a rare voice or tint, not a text background; mid-lightness members (blue about L 0.53, lilac and grey about L 0.68-0.71) are given non-text roles or lightness-moved steps, with a before/after report. The run states explicitly what bent (for example the default white-on-saturated-accent button pattern and any Committed or Drenched strategy are dropped in favour of principle 1), that principle 4 (never rely on colour alone) is reflected in status colours (paired with icon or word) and a CVD check, and that principle 5 raises the contrast target above the minimum (reports WCAG 2 ratio and APCA Lc).
+
+  Files: DESIGN.md (acp marker regions, with an Adjustments note naming principle 1), design/palette.json and design/tokens.css. The run does not edit design-principles.md, does not rewrite the team principles, does not choose type or layout, and asks once about the optional CLAUDE.md/AGENTS.md palette pointer, since this neighbour reads no palette file.
+context:
+  scaffold_script: place-files.sh

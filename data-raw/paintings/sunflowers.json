@@ -1,0 +1,65 @@
+{
+  "snapshot_date": "2026-10-22",
+  "page_url": "https://colorcombinations.org/paintings/sunflowers/",
+  "json_export_source": "inline <script type=application/json data-payload=json> behind the Download JSON button (no separate URL exists)",
+  "licence": "CC BY 4.0 sampling; artwork public domain; credit colorcombinations.org",
+  "export_verbatim": {
+    "source": "https://colorcombinations.org/palettes/paintings/sunflowers/",
+    "slug": "paintings/sunflowers",
+    "title": "Sunflowers — Vincent van Gogh",
+    "era": "edo",
+    "moods": [],
+    "colors": [
+      {
+        "hex": "#F2E986"
+      },
+      {
+        "hex": "#E2D876"
+      },
+      {
+        "hex": "#BDA719"
+      },
+      {
+        "hex": "#B19D1B"
+      },
+      {
+        "hex": "#B2921A"
+      },
+      {
+        "hex": "#9D7D11"
+      }
+    ]
+  },
+  "swatches_from_page": [
+    {
+      "hex": "#F2E986",
+      "coverage_pct_text": " 9",
+      "role": "ground"
+    },
+    {
+      "hex": "#E2D876",
+      "coverage_pct_text": " 8",
+      "role": "ground"
+    },
+    {
+      "hex": "#BDA719",
+      "coverage_pct_text": " 6",
+      "role": "accent"
+    },
+    {
+      "hex": "#B19D1B",
+      "coverage_pct_text": " 10",
+      "role": "ground"
+    },
+    {
+      "hex": "#B2921A",
+      "coverage_pct_text": " 2",
+      "role": "accent"
+    },
+    {
+      "hex": "#9D7D11",
+      "coverage_pct_text": " 6",
+      "role": "accent"
+    }
+  ]
+}

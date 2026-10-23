@@ -1,0 +1,65 @@
+{
+  "snapshot_date": "2026-10-22",
+  "page_url": "https://colorcombinations.org/paintings/the-third-of-may-1808/",
+  "json_export_source": "inline <script type=application/json data-payload=json> behind the Download JSON button (no separate URL exists)",
+  "licence": "CC BY 4.0 sampling; artwork public domain; credit colorcombinations.org",
+  "export_verbatim": {
+    "source": "https://colorcombinations.org/palettes/paintings/the-third-of-may-1808/",
+    "slug": "paintings/the-third-of-may-1808",
+    "title": "The Third of May 1808 — Francisco Goya",
+    "era": "edo",
+    "moods": [],
+    "colors": [
+      {
+        "hex": "#BE9453"
+      },
+      {
+        "hex": "#AE8152"
+      },
+      {
+        "hex": "#855532"
+      },
+      {
+        "hex": "#332B20"
+      },
+      {
+        "hex": "#281E14"
+      },
+      {
+        "hex": "#1E1D1A"
+      }
+    ]
+  },
+  "swatches_from_page": [
+    {
+      "hex": "#BE9453",
+      "coverage_pct_text": " 1",
+      "role": "accent"
+    },
+    {
+      "hex": "#AE8152",
+      "coverage_pct_text": " 2",
+      "role": "accent"
+    },
+    {
+      "hex": "#855532",
+      "coverage_pct_text": " 1",
+      "role": "accent"
+    },
+    {
+      "hex": "#332B20",
+      "coverage_pct_text": " 6",
+      "role": "ground"
+    },
+    {
+      "hex": "#281E14",
+      "coverage_pct_text": " 5",
+      "role": "ground"
+    },
+    {
+      "hex": "#1E1D1A",
+      "coverage_pct_text": " 30",
+      "role": "ground"
+    }
+  ]
+}
