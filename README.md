@@ -4,8 +4,9 @@ An Agent Skill that gives coding agents real artistic colour palettes in place o
 defaults, then makes those palettes work in a real interface. It searches Sanzo Wada's
 *A Dictionary of Color Combinations* (plates 1–348), Heian *kasane no irome* layered colour
 patterns, palettes sampled from public-domain paintings and editorial palettes from
-colorcombinations.org. It shows 3–5 candidates as applied mini-layouts (light, dark, greyscale)
-and lets you choose one. It then builds OKLCH ramps, two-tier design tokens, colour proportions,
+colorcombinations.org. You can ask in everyday colour words ("ocean", "pastel pink", "coffee",
+"dark and muted") or start from a brand colour, and it finds palettes that hold a close match. It
+shows 3–5 candidates as applied mini-layouts (light, dark, greyscale) and lets you choose one. It then builds OKLCH ramps, two-tier design tokens, colour proportions,
 measured WCAG 2 and APCA contrast and a composed (not inverted) dark mode, using the perceptual
 principles of Josef Albers' *Interaction of Color*. The result goes into `DESIGN.md`,
 `design/palette.json` and `design/tokens.css`, where neighbouring design skills can read it. It

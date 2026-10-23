@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: discovery-pastel-bedtime-app
+expected_outcome: |
+  No source is named and the user invites any family, so this is a discovery run across the bundled data: it shows candidates and stops for the user's choice. No files are written.
+
+  A good result turns the brief into colour words and filters (soft or pastel, sea, dusk, calm; for example `pastel ocean dusk`, `soft sea`, `--mood serene`, `--lightness light`, `--chroma muted`) and searches more than one source family, since kasane patterns and paintings can now be filtered by their measured moods. It passes on how the script read its words. It presents 3 to 5 candidates that exist in data/palettes.csv, from at least two families (Wada plates, kasane, paintings, editorial), each with its exact provenance label, hex and OKLCH per colour, one line on fit and a known trap; a painting with a drift note carries it, and a kasane pattern says its hex values are interpretations.
+
+  It takes the setting into account: a dim bedroom at night, so a dark or low-brightness default (pastels as accents or a soft dark ground rather than a bright light page), and a calm palette for small children without the baby-pink-plus-baby-blue cliché the user ruled out. It then asks which candidate to use and stops; it invents nothing.

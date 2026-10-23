@@ -64,11 +64,27 @@ role mapping per family, the anti-cliché list and three worked examples with me
 
 ```bash
 python <skill>/scripts/search.py --count 3 --mood refined,cool --source-type wada_plate "slate blue"
+python <skill>/scripts/search.py pastel ocean --chroma muted   # everyday colour words are read as colours
+python <skill>/scripts/search.py --near "#2a9d8f" --limit 5    # palettes holding a colour close to a brand hex
 python <skill>/scripts/search.py --id wada-218        # exact lookup; also ed-…, paint-…, kasane-…
 ```
 
-- Filters first (`--count`, `--mood`, `--hue`, `--era`, `--source-type`, `--season`), then a short
-  free-text query. One intent per query: "earthy", then separately "autumn", rather than both at once.
+- Translate the brief into colour words first: the scene, the materials, the light ("a roastery
+  at dusk" → `coffee dark`; "a children's sleep app" → `pastel ocean`). Product words (fintech,
+  dashboard, bakery) name no colour, so the script returns no match for them on purpose.
+- Filters: `--count` (one number, a list `3,4` or a range `2-3`), `--mood`, `--hue` (any hue
+  the palette contains, teal included), `--lightness` (dark / mid / light, by area-weighted mean
+  L), `--chroma` (muted / moderate / vivid, by the most saturated colour; both bands also take
+  ranges like `0.6-0.8`), `--near`, `--era`, `--source-type`, `--season`. Then a short free-text
+  query; one intent per query.
+- The script prints how it read each word (`read 'ocean' as colours blue or teal`). Say that
+  reading when you present candidates: it is the skill's interpretation, not the source's. Kasane
+  and painting moods are measured from their colours (shown as "measured"); Wada and editorial
+  moods are the site's tags. A word after "not" or "without" is not searched; use a filter instead.
+- Brand colour: `--near` (or a `#rrggbb` in the query) keeps palettes holding a colour within
+  dE_OK 0.08 and prints the distance; quote it. When nothing is that close, the script names the
+  closest colour and its distance: say so, then offer a looser match (`--near-max`, called looser)
+  or a palette built around the brand colour (`--hex`). Never call a distant plate a match.
 - Weak or zero results: say "no match" and name the filters used, retry once narrower or with
   one filter relaxed, and then stop. Exit codes: 0 results, 1 no match, 2 not in the data.
 - When the user asks for Japanese paintings, put Hokusai's *Great Wave* first: it is the only
@@ -276,7 +292,8 @@ All scripts are Python 3.10+, standard library only, need no network, and handle
 and Japanese names. Run them by path from the project root; `<skill>` is this skill's folder.
 Each has `--help`.
 
-- `scripts/search.py`: filter and rank the 436 palettes; `--id` for exact lookups; `--json`.
+- `scripts/search.py`: filter and rank the 436 palettes by colour words, hue, lightness, chroma or
+  nearness to a hex; `--id` for exact lookups; `--json`. Its colour vocabulary is `scripts/vocab.py`.
 - `scripts/preview.py`: one self-contained HTML page comparing 3–5 candidates (`--any-count` to override).
 - `scripts/build_tokens.py`: ramps, roles, voices, status colours, proportion targets as JSON.
 - `scripts/validate.py`: WCAG 2 gate, APCA target, flags, CVD; `--fix` moves lightness only.

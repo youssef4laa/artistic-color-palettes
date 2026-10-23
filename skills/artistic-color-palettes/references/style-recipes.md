@@ -55,9 +55,9 @@ and get the stricter checks (every adjacent pair, proportion preview). A plate i
 
 ### 1.5 Search and candidates
 
-1. Filters first: colour count (2/3/4), mood (austere, bold, cool, earthy, playful, refined,
-   serene, solemn, warm), dominant hue, era, source type (`wada_plate` / `editorial` / `painting` / `kasane`);
-   then free text over names, summary and tags.
+1. Filters first: colour count, mood (kasane and paintings carry measured moods), a hue the palette
+   contains, lightness and chroma bands, `--near HEX`, era, source type; then colour words, never product
+   words ("ocean", "coffee", not "fintech"); repeat the script's `read '…' as …` line to the user.
 2. Return three to five candidates, each with provenance label, hex and OKLCH per colour, tone
    pattern, suited strategy, one line on fit, and the known trap (mid-lightness members, vibrating
    pairs, drift). Show them as applied mini-layouts in light and dark, never as bare swatches.

@@ -18,9 +18,22 @@ Derived columns, documented here so nobody has to guess:
                 The arc is 360 minus the largest gap between neighbouring hues. Fewer than two
                 chromatic colours -> 'same'. This follows Wada's same-tone / different-tone idea
                 (references/wada-method.md 3.4); the threshold is the skill's own choice.
-  hue           Wada/editorial rows: the site's dominant hue. Paintings and kasane: the bucket
-                (red orange yellow green blue purple pink brown neutral) with the largest summed
-                OKLCH chroma, see dominant_hue().
+  hue           every row: the dominant hue bucket measured from the hex values (red orange yellow
+                green teal blue purple pink brown neutral; colorlib.hue_bucket), i.e. the bucket with
+                the largest area-weighted OKLCH chroma above 0.04 (colorlib.palette_profile). The
+                site's own dominant_hue tag is not used: it files 13 of the 348 plates under blue and
+                none under purple, while 162 plates contain a blue and 77 a purple.
+  hues          every hue bucket the palette contains, largest area share first (';'-joined). This is
+                what search.py --hue filters on, so a plate with one blue colour is found by "blue".
+                Area weights: paintings by measured coverage, kasane with the hitoe at 10 %, others equal.
+  moods         Wada/editorial rows: the site's mood tags (mood_source 'site'). Paintings and kasane
+                have none on the site, so they get measured moods (mood_source 'measured'), see
+                measured_moods(): warm / cool (>= 60 % of the area-weighted chroma above 0.04 falls in
+                the warm arc 330-115 degrees / the cool arc 130-300), serene (light band and mean C
+                <= 0.10), solemn (dark band), bold (vivid band and L range >= 0.35), austere (muted
+                band), earthy (>= 50 % of the area in earth tones: hue 35-115, C 0.02-0.13, L 0.25-0.75),
+                playful (mean L >= 0.65, three or more hue families, C max >= 0.13). 'refined' is a
+                curatorial judgement the site applies to 83 % of its rows, so it is never measured.
   count         number of distinct colours.
   pair_groups   always empty: the hex order of palettes.csv is not the on-plate position, and the 1G measurements
                 (data-raw/wada-proportions.csv, 1G/diagnostics.csv) record area shares per colour, not positions,
@@ -46,7 +59,9 @@ TONE_CHROMA_MIN = 0.04
 PALETTE_COLUMNS = [
     "id", "source_type", "title", "title_ja", "colors", "color_names", "roles", "coverage", "hue",
     "moods", "era", "season", "count", "drift", "tone_family", "pair_groups", "label", "source_url", "licence",
+    "hues", "mood_source",
 ]
+MOOD_ORDER = ("warm", "cool", "serene", "solemn", "bold", "austere", "earthy", "playful")
 COLOR_COLUMNS = [
     "slug", "name", "name_ja", "meaning", "hex", "hue_family", "palette_count", "wada_no", "wada_kanji",
     "wada_kana", "wada_print_name", "cmyk", "aliases", "oklch_l", "oklch_c", "oklch_h", "best_text",
@@ -151,33 +166,47 @@ def tone_family(hexes: list[str]) -> str:
     return "same" if spread <= TONE_SPREAD_DEG else "different"
 
 
-def hue_bucket(hex_: str) -> str:
-    L, c, h = cl.hex_to_oklch(hex_)
-    if c < 0.025:
-        return "neutral"
-    if h >= 335 or h < 12:
-        return "pink" if L >= 0.6 or c < 0.12 else "red"
-    if h < 40:
-        return "red"
-    if h < 80:
-        return "brown" if L < 0.58 else "orange"
-    if h < 122:
-        return "brown" if (L < 0.5 and h < 100) else "yellow"
-    if h < 215:
-        return "green" if h < 175 else "blue"
-    if h < 270:
-        return "blue"
-    return "purple"
+def measured_moods(row: dict) -> list[str]:
+    """Mood tags measured from the colours (the rules are listed in the module docstring)."""
+    p = cl.palette_profile(row)
+    cs = p["colours"]
+
+    def force(x: dict) -> float:
+        return x["w"] * max(0.0, x["C"] - cl.CHROMATIC_MIN)
+
+    moods = set()
+    total = sum(force(x) for x in cs)
+    if total > 0:
+        if sum(force(x) for x in cs if x["h"] >= 330 or x["h"] < 115) / total >= 0.6:
+            moods.add("warm")
+        if sum(force(x) for x in cs if 130 <= x["h"] < 300) / total >= 0.6:
+            moods.add("cool")
+    if p["lightness"] == "light" and sum(x["C"] * x["w"] for x in cs) <= 0.10:
+        moods.add("serene")
+    if p["lightness"] == "dark":
+        moods.add("solemn")
+    if p["chroma"] == "vivid" and p["l_range"] >= 0.35:
+        moods.add("bold")
+    if p["chroma"] == "muted":
+        moods.add("austere")
+    if sum(x["w"] for x in cs if 35 <= x["h"] <= 115 and 0.02 <= x["C"] <= 0.13 and 0.25 <= x["L"] <= 0.75) >= 0.5:
+        moods.add("earthy")
+    if p["l_mean"] >= 0.65 and len({x["bucket"] for x in cs} - {"neutral"}) >= 3 and p["c_max"] >= 0.13:
+        moods.add("playful")
+    return [m for m in MOOD_ORDER if m in moods]
 
 
-def dominant_hue(hexes: list[str]) -> str:
-    score: dict[str, float] = {}
-    for hx in hexes:
-        b = hue_bucket(hx)
-        score[b] = score.get(b, 0.0) + (cl.hex_to_oklch(hx)[1] if b != "neutral" else 0.0)
-    if not score or max(score.values()) <= 0:
-        return "neutral"
-    return sorted(score.items(), key=lambda kv: (-kv[1], kv[0]))[0][0]
+def add_measured_columns(row: dict) -> dict:
+    """hue and hues from the hex values for every row; measured moods where the source has none."""
+    p = cl.palette_profile(row)
+    row["hue"] = p["dominant"]
+    row["hues"] = ";".join(p["hue_shares"])
+    if row["moods"]:
+        row["mood_source"] = "site"
+    else:
+        row["moods"] = ";".join(measured_moods(row))
+        row["mood_source"] = "measured"
+    return row
 
 
 def check_hexes(row_id: str, hexes: list[str]) -> list[str]:
@@ -208,7 +237,7 @@ def build_dictionary_rows(raw: Path) -> list[dict]:
             rows.append(dict(
                 id=f"wada-{plate}", source_type="wada_plate", title=r["title"], title_ja=r["title_ja"],
                 colors=";".join(hexes), color_names=";".join(names), roles="", coverage="",
-                hue=r["dominant_hue"], moods=moods, era=r["era"], season="", count=len(set(hexes)),
+                hue="", moods=moods, era=r["era"], season="", count=len(set(hexes)),
                 drift="", tone_family=tone_family(hexes), label=label_wada(plate),
                 source_url=r["canonical_url"], licence=LICENCE_WADA,
             ))
@@ -216,7 +245,7 @@ def build_dictionary_rows(raw: Path) -> list[dict]:
             rows.append(dict(
                 id=f"ed-{slug}", source_type="editorial", title=r["title"], title_ja=r["title_ja"],
                 colors=";".join(hexes), color_names=";".join(names), roles="", coverage="",
-                hue=r["dominant_hue"], moods=moods, era=r["era"], season="", count=len(set(hexes)),
+                hue="", moods=moods, era=r["era"], season="", count=len(set(hexes)),
                 drift="", tone_family=tone_family(hexes), label=LABEL_EDITORIAL,
                 source_url=r["canonical_url"], licence=LICENCE_CC,
             ))
@@ -253,7 +282,7 @@ def build_paintings(raw: Path) -> tuple[list[dict], list[dict]]:
         rows.append(dict(
             id=pid, source_type="painting", title=f"{title} — {artist}", title_ja="",
             colors=";".join(hexes), color_names=";".join(f"{r} {i + 1}" for i, r in enumerate(roles)),
-            roles=";".join(roles), coverage=";".join(cov_text), hue=dominant_hue(hexes), moods="", era="",
+            roles=";".join(roles), coverage=";".join(cov_text), hue="", moods="", era="",
             season="", count=len(set(hexes)), drift="true" if drift else "false",
             tone_family=tone_family(hexes), label=label, source_url=url, licence=LICENCE_CC,
         ))
@@ -362,7 +391,7 @@ def build_kasane(md_path: Path) -> list[dict]:
         rows.append(dict(
             id=f"kasane-{slug}", source_type="kasane", title=title, title_ja=p["kanji"],
             colors=";".join(hexes), color_names=";".join(e[1][0] for e in entries),
-            roles=";".join(e[0] for e in entries), coverage="", hue=dominant_hue(hexes), moods="",
+            roles=";".join(e[0] for e in entries), coverage="", hue="", moods="",
             era="heian", season=p["season"], count=len(set(hexes)), drift="",
             tone_family=tone_family(hexes), label=label_kasane(p["romaji"]),
             source_url="references/kasane-no-irome.md", licence=LICENCE_KASANE,
@@ -476,7 +505,7 @@ def main(argv=None) -> int:
     dict_rows = build_dictionary_rows(raw)
     paint_rows, records = build_paintings(raw)
     kasane_rows = build_kasane(args.kasane)
-    rows = dict_rows + paint_rows + kasane_rows
+    rows = [add_measured_columns(r) for r in dict_rows + paint_rows + kasane_rows]
     ids = [r["id"] for r in rows]
     if len(ids) != len(set(ids)):
         raise SystemExit("duplicate palette ids")

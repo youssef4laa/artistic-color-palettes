@@ -27,7 +27,7 @@ class TestPalettesTable(unittest.TestCase):
     def test_columns_and_unique_ids(self):
         self.assertEqual(list(self.rows[0].keys()), [
             "id", "source_type", "title", "title_ja", "colors", "color_names", "roles", "coverage", "hue", "moods", "era",
-            "season", "count", "drift", "tone_family", "pair_groups", "label", "source_url", "licence"])
+            "season", "count", "drift", "tone_family", "pair_groups", "label", "source_url", "licence", "hues", "mood_source"])
         ids = [r["id"] for r in self.rows]
         self.assertEqual(len(ids), len(set(ids)))
         for r in self.rows:

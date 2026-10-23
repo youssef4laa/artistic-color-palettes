@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: discovery-coffee-roastery
+expected_outcome: |
+  No source, plate, painting or pattern is named, so this is a discovery run: it shows candidates and stops for the user's choice. No files are written (no DESIGN.md, design/palette.json, design/tokens.css or preview file).
+
+  A good result first turns the brief into colour words (dark, warm, smoky, roasted, iron and brick of a railway arch) rather than searching for "coffee shop" or "website", and searches the bundled data with them and with filters (for example `coffee dark smoky`, `--lightness dark`, `--mood warm`, `--chroma muted`, charcoal or rust). It passes on how the script read its words ("read 'coffee' as coffee browns with cream or tan") instead of presenting that reading as a property of the source.
+
+  It presents 3 to 5 candidates that exist in data/palettes.csv, any source family, each with its exact provenance label, hex and OKLCH per colour, the strategy it suits, one line on fit and a known trap. Because the user asked to avoid the usual brown-and-cream coffee look, at least one candidate is something else (for example near-black with rust, a dark painting ground, or a deep green or blue with warm accents), and the response says which candidates avoid the cliché. A painting with a drift note carries it. It then asks which candidate to use and stops; it does not pick one, does not proceed on "any of these", and invents nothing.

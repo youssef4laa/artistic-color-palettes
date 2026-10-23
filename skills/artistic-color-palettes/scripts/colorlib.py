@@ -261,6 +261,85 @@ def delta_e_ok(a: str, b: str) -> float:
     return math.dist(la, lb)
 
 
+# --------------------------------------------------------------------------- palette profile (build_data + search)
+
+HUE_BUCKETS = ("red", "orange", "yellow", "green", "teal", "blue", "purple", "pink", "brown", "neutral")
+CHROMATIC_MIN = 0.04  # OKLCH C below this reads as a (tinted) neutral for hue, temperature and tone
+LIGHTNESS_BANDS = {"dark": (0.0, 0.50), "mid": (0.50, 0.72), "light": (0.72, 1.0001)}  # area-weighted mean L
+CHROMA_BANDS = {"muted": (0.0, 0.11), "moderate": (0.11, 0.17), "vivid": (0.17, 1.0)}  # the most saturated colour
+KASANE_HITOE_SHARE = 0.10  # the hitoe is an edge accent (the skill's 5-10 % convention); the layers share the rest
+
+
+def hue_bucket(value: str) -> str:
+    """Name a colour's hue family from OKLCH. Teal (170-215 degrees) is its own bucket, so turquoise and
+    green-blue plates are not filed under blue; low chroma (C < CHROMATIC_MIN) is 'neutral'."""
+    L, c, h = hex_to_oklch(value)
+    if c < CHROMATIC_MIN:
+        return "neutral"
+    if h >= 335 or h < 12:
+        return "pink" if L >= 0.6 or c < 0.12 else "red"
+    if h < 40:
+        return "red"
+    if h < 80:
+        return "brown" if L < 0.58 else "orange"
+    if h < 122:
+        return "brown" if (L < 0.5 and h < 100) else "yellow"
+    if h < 170:
+        return "green"
+    if h < 215:
+        return "teal"
+    if h < 270:
+        return "blue"
+    return "purple"
+
+
+def palette_weights(row: dict) -> list[float]:
+    """Area weight of each colour of a palettes.csv row, summing to 1. Paintings: measured canvas coverage
+    ('<1' counts as 0.5). Kasane: the hitoe edge KASANE_HITOE_SHARE, the layers share the rest. Wada plates
+    and editorial palettes: equal (the plates show equal swatches)."""
+    hexes = [h for h in row["colors"].split(";") if h]
+    n = len(hexes)
+    if row.get("source_type") == "painting" and row.get("coverage"):
+        raw = [0.5 if c.strip().startswith("<") else float(c or 0) for c in row["coverage"].split(";")]
+        if len(raw) == n and sum(raw) > 0:
+            return [w / sum(raw) for w in raw]
+    if row.get("source_type") == "kasane" and n > 1 and row.get("roles", "").split(";")[0] == "hitoe":
+        return [KASANE_HITOE_SHARE] + [(1 - KASANE_HITOE_SHARE) / (n - 1)] * (n - 1)
+    return [1.0 / n] * n if n else []
+
+
+def band_of(value: float, bands: dict[str, tuple[float, float]]) -> str:
+    return next(name for name, (lo, hi) in bands.items() if lo <= value < hi)
+
+
+def palette_profile(row: dict) -> dict:
+    """Measured description of a palette row: per-colour OKLCH, hue bucket and weight; the weighted mean L
+    and its band; the most saturated colour's C and its band; the L range; hue shares by area; and the
+    dominant hue (largest area-weighted chroma above CHROMATIC_MIN, so near-neutral grounds do not decide it)."""
+    hexes = [h for h in row["colors"].split(";") if h]
+    weights = palette_weights(row)
+    colours = []
+    for hx, w in zip(hexes, weights):
+        L, c, h = hex_to_oklch(hx)
+        colours.append({"hex": hx, "L": L, "C": c, "h": h, "bucket": hue_bucket(hx), "w": w})
+    l_mean = sum(x["L"] * x["w"] for x in colours)
+    c_max = max(x["C"] for x in colours)
+    shares: dict[str, float] = {}
+    force: dict[str, float] = {}
+    for x in colours:
+        shares[x["bucket"]] = shares.get(x["bucket"], 0.0) + x["w"]
+        if x["bucket"] != "neutral":
+            force[x["bucket"]] = force.get(x["bucket"], 0.0) + x["w"] * max(0.0, x["C"] - CHROMATIC_MIN)
+    order = {b: i for i, b in enumerate(HUE_BUCKETS)}
+    dominant = max(force.items(), key=lambda kv: (kv[1], -order[kv[0]]))[0] if force and max(force.values()) > 0 else "neutral"
+    return {
+        "colours": colours, "l_mean": l_mean, "lightness": band_of(l_mean, LIGHTNESS_BANDS),
+        "c_max": c_max, "chroma": band_of(c_max, CHROMA_BANDS),
+        "l_range": max(x["L"] for x in colours) - min(x["L"] for x in colours),
+        "hue_shares": dict(sorted(shares.items(), key=lambda kv: (-kv[1], order[kv[0]]))), "dominant": dominant,
+    }
+
+
 # --------------------------------------------------------------------------- WCAG 2
 
 

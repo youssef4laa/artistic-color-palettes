@@ -95,8 +95,11 @@ class TestSearch(unittest.TestCase):
         self.assertTrue(rs)
         self.assertTrue(all(r["source_type"] == "kasane" and "late autumn" in r["season"].lower() for r in rs))
         p = search("--era", "edo", "--hue", "brown", "--json")
-        for r in json.loads(p.stdout_text)["results"]:
-            self.assertEqual((r["era"], r["hue"]), ("edo", "brown"))
+        rs = json.loads(p.stdout_text)["results"]
+        self.assertTrue(rs)
+        for r in rs:  # --hue matches a hue the palette contains, not only its dominant hue
+            self.assertEqual(r["era"], "edo")
+            self.assertIn("brown", r["hues"])
 
     def test_misspelling_aliases_find_the_plate(self):
         p = search("sulphur", "yellow", "--json")
