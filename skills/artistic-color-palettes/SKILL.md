@@ -4,7 +4,7 @@ description: "Real artistic colour palettes with provenance, made into working U
 license: "MIT (see NOTICE.md; references/kasane-no-irome.md is CC BY-SA 4.0)"
 compatibility: "Bundled scripts need Python 3.10+ (standard library only) and no network access."
 metadata:
-  version: "0.1.1"
+  version: "0.1.2"
 ---
 
 # Artistic colour palettes
