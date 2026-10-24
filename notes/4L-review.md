@@ -2,7 +2,7 @@
 
 Reviewer: agent 4L. Scope: the skill tree, `README.md`, `LICENSE`, `.claude-plugin/*`, eval outputs of
 iteration 2 (and iteration 3 where it adds evidence). Nothing in the skill or repo was edited. Scratch
-work: `C:\Users\yossi\AppData\Local\Temp\claude\D--Code-Skill\29e06267-cbed-4514-9da6-8af08a7dcb07\scratchpad\4L\`.
+work: a local scratch folder (not kept).
 Paths below are relative to `skills/artistic-color-palettes/` unless they start with `notes/` or the repo root.
 
 Baseline: `python -m unittest discover -s scripts/tests` gives **130 tests OK** (22.7 s).
