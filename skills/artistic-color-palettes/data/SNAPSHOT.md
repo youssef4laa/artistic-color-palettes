@@ -1,6 +1,6 @@
 # Snapshot of colorcombinations.org data
 
-Snapshot date: 2026-10-22. Raw files live in `data-raw/` (not shipped).
+Snapshot date: 2026-10-22. Raw files live in `data-raw/` on the repo's `sources` branch (not shipped).
 
 ## Files
 

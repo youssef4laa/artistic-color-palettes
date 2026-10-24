@@ -131,6 +131,7 @@ class TestColorsAndPaintingsJson(unittest.TestCase):
         black = next(c for c in cs if c["name"] == "Black")
         self.assertEqual(black["best_text"], "#ffffff")
 
+    @unittest.skipUnless((REPO / "data-raw" / "paintings.json").exists(), "data-raw not present")
     def test_paintings_json(self):
         data = json.loads((REPO / "data-raw" / "paintings.json").read_text(encoding="utf-8"))
         self.assertEqual(len(data), 25)

@@ -1,4 +1,4 @@
-"""Red-team fixes S2, S3, S4, S9, S10 (notes/4L-review.md)."""
+"""Red-team fixes S2, S3, S4, S9, S10 (notes/4L-review.md, sources branch)."""
 import json
 import re
 import unittest

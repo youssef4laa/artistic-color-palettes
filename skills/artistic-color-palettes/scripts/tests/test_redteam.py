@@ -1,4 +1,4 @@
-"""Red-team fixes (notes/4L-review.md): B1 forged provenance, S1 missing kasane names, S5 kept 'no', S6 protected folders."""
+"""Red-team fixes (notes/4L-review.md, sources branch): B1 forged provenance, S1 missing kasane names, S5 kept 'no', S6 protected folders."""
 import io
 import json
 import tempfile

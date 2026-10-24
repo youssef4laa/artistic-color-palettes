@@ -58,7 +58,7 @@ OR OTHER DEALINGS IN THE SOFTWARE.
 - Base colour names and hex values come from Wikipedia, "Traditional colors of Japan"
   (https://en.wikipedia.org/wiki/Traditional_colors_of_Japan), licensed CC BY-SA 4.0.
 - `references/kasane-no-irome.md` (short form: vocabulary, rules and the pattern index) and the full pattern
-  source it is built from, `<repo>/data-raw/kasane-no-irome.md`, are licensed CC BY-SA 4.0
+  source it is built from, `data-raw/kasane-no-irome.md` on the repo's `sources` branch, are licensed CC BY-SA 4.0
   (https://creativecommons.org/licenses/by-sa/4.0/).
   The 33 kasane rows in `data/palettes.csv` derive from it and carry the licence label
   `CC-BY-SA-4.0 (base hex) + own composition`. Share-alike applies to that file and to those data

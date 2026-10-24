@@ -69,7 +69,7 @@ to your global `~/.claude/CLAUDE.md`.
 3. Share the marketplace command: `claude plugin marketplace add youssef4laa/artistic-color-palettes`.
 4. Optional: submit the plugin to Anthropic's directory (PR to `anthropics/claude-plugins-official`).
 5. Keep `skills/artistic-color-palettes/data/SNAPSHOT.md` dated whenever the data is refreshed, and bump the version in `plugin.json`, `marketplace.json` and the `SKILL.md` frontmatter together.
-6. The marketplace entry installs only `skills/artistic-color-palettes/`; `notes/` and `data-raw/` stay in the repo for maintainers and are not copied by `claude plugin install` or `npx skills add`.
+6. The marketplace entry installs only `skills/artistic-color-palettes/`. Maintainer material (`notes/`: build notes, eval sets and reviews; `data-raw/`: the raw data snapshot that `scripts/build_data.py` reads) lives on the `sources` branch. Its README explains how to rebuild the data from a worktree of that branch.
 
 ## Data sources and licences
 

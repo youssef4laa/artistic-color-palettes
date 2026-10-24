@@ -3,7 +3,7 @@
 the two data files the skill ships (data/palettes.csv, data/colors.csv) plus the maintainers' painting records
 (data-raw/paintings.json, not shipped: nothing at run time reads it).
 
-Inputs (default: <repo>/data-raw, overridable with --raw):
+Inputs (default: <repo>/data-raw, overridable with --raw; data-raw/ lives on the repo's sources branch):
   palettes.csv, colors.csv, wada-index.csv, paintings/*.json
   kasane-no-irome.md (33 layered patterns, parsed from the markdown; the shipped
   references/kasane-no-irome.md is the short form with an index table and carries no 'Hex sequence' lines)
@@ -500,8 +500,8 @@ def main(argv=None) -> int:
     )
     ap.add_argument("--raw", type=Path, default=root.parent.parent / "data-raw", help="raw snapshot folder (default: <repo>/data-raw)")
     ap.add_argument("--out", type=Path, default=root / "data", help="output folder (default: <skill>/data)")
-    ap.add_argument("--kasane", type=Path, default=root.parent.parent / "data-raw" / "kasane-no-irome.md",
-                    help="full kasane pattern markdown with 'Hex sequence' lines (default: <repo>/data-raw/kasane-no-irome.md)")
+    ap.add_argument("--kasane", type=Path,
+                    help="full kasane pattern markdown with 'Hex sequence' lines (default: <raw>/kasane-no-irome.md)")
     ap.add_argument("--paintings-out", dest="paintings_out", type=Path,
                     help="where to write paintings.json (default: <raw>/paintings.json; it is not part of the shipped data)")
     args = ap.parse_args(argv)
@@ -509,7 +509,7 @@ def main(argv=None) -> int:
     raw, out = args.raw, args.out
     dict_rows = build_dictionary_rows(raw)
     paint_rows, records = build_paintings(raw)
-    kasane_rows = build_kasane(args.kasane)
+    kasane_rows = build_kasane(args.kasane or raw / "kasane-no-irome.md")
     rows = [add_measured_columns(r) for r in dict_rows + paint_rows + kasane_rows]
     ids = [r["id"] for r in rows]
     if len(ids) != len(set(ids)):

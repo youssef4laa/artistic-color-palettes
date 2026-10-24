@@ -1,4 +1,4 @@
-"""Orchestrator amendments v2 (notes/2-shared-constants.md section 7)."""
+"""Orchestrator amendments v2 (notes/2-shared-constants.md section 7, sources branch)."""
 import unittest
 
 from common import run_script  # noqa: F401

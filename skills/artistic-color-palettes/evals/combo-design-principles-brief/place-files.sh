@@ -4,7 +4,7 @@ export MSYS_NO_PATHCONV=1
 HERE="$(cd "$(dirname "$0")" && pwd)"
 cp -R "$HERE/files/." .
 
-# Neighbour skills are fetched at pinned SHAs (see notes/fetch-reference-skills.sh), never copied into this repo.
+# Neighbour skills are fetched at pinned SHAs (see notes/fetch-reference-skills.sh on the sources branch), never copied into this repo.
 TMP="$(mktemp -d)"
 TMP="$(cd "$TMP" && { pwd -W 2>/dev/null || pwd; })"   # native path so git.exe and cp agree on Windows
 trap 'rm -rf "$TMP"' EXIT

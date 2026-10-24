@@ -7,7 +7,7 @@ Output: JSON (stdout or --out) that validate.py, preview.py and handoff.py consu
         palette provenance, role assignment, ramps (light + separately composed dark),
         semantic roles for light and dark, voice and status colours, proportion targets.
 
-All numbers come from notes/2-shared-constants.md (ramp L tables, chroma profile, role map,
+All numbers come from notes/2-shared-constants.md (sources branch) (ramp L tables, chroma profile, role map,
 proportion targets) and are held as module constants below.
 
 Choices a user of this script should know:
