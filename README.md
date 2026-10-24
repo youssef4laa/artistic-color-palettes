@@ -5,8 +5,8 @@ Skill for Claude Code, Codex, Cursor, Gemini CLI, GitHub Copilot, OpenCode and o
 `SKILL.md`.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/palettes-dark.png">
-  <img alt="Six palettes from the skill's data: Wada plates 218 and 288, the kasane patterns Ume-gasane and Kaede momiji, and colours sampled from The Starry Night and The Great Wave, each with its provenance label" src=".github/assets/palettes-light.png" width="880">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/youssef4laa/artistic-color-palettes/readme-assets/palettes-dark.png">
+  <img alt="Six palettes from the skill's data: Wada plates 218 and 288, the kasane patterns Ume-gasane and Kaede momiji, and colours sampled from The Starry Night and The Great Wave, each with its provenance label" src="https://raw.githubusercontent.com/youssef4laa/artistic-color-palettes/readme-assets/palettes-light.png" width="880">
 </picture>
 
 It replaces an agent's usual default colours with palettes that have a real source. Those sources
@@ -90,8 +90,8 @@ mkdir -p ~/.cursor/skills && ln -s ~/.agents/skills/artistic-color-palettes ~/.c
 ## See it
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/before-after-dark.png">
-  <img alt="The same landing page twice. Left: a typical indigo-to-purple default where the white button label measures 4.47:1, under the 4.5:1 minimum. Right: tokens the skill built from Wada plate 229, golden yellow with deep slate olive, where the button label measures 13.63:1 in light mode" src=".github/assets/before-after-light.png" width="880">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/youssef4laa/artistic-color-palettes/readme-assets/before-after-dark.png">
+  <img alt="The same landing page twice. Left: a typical indigo-to-purple default where the white button label measures 4.47:1, under the 4.5:1 minimum. Right: tokens the skill built from Wada plate 229, golden yellow with deep slate olive, where the button label measures 13.63:1 in light mode" src="https://raw.githubusercontent.com/youssef4laa/artistic-color-palettes/readme-assets/before-after-light.png" width="880">
 </picture>
 
 The right-hand side is real output: `build_tokens.py --palette wada-229 --strategy committed --mode
@@ -136,7 +136,10 @@ to your global `~/.claude/CLAUDE.md`.
 4. Optional: submit the plugin to Anthropic's directory (PR to `anthropics/claude-plugins-official`).
 5. Keep `skills/artistic-color-palettes/data/SNAPSHOT.md` dated whenever the data is refreshed, and bump the version in `plugin.json`, `marketplace.json` and the `SKILL.md` frontmatter together.
 6. The marketplace entry installs only `skills/artistic-color-palettes/`. Maintainer material (`notes/`: build notes, eval sets and reviews; `data-raw/`: the raw data snapshot that `scripts/build_data.py` reads) lives on the `sources` branch. Its README explains how to rebuild the data from a worktree of that branch.
-7. After changing the data or the demo palette, re-run `python3 .github/scripts/readme_assets.py` (it needs Google Chrome or Chromium). It renders the README images, `social-preview.png` (upload it under Settings → Social preview) and the plugin icon `.claude-plugin/icon.png`. The images are committed as PNG, not SVG, because Anthropic's plugin directory holds SVG files for review. The directory takes the listing icon only the first time the plugin is saved or submitted there.
+7. After changing the data or the demo palette, re-run `python3 .github/scripts/readme_assets.py` (it needs Google Chrome or Chromium).
+   - It writes the plugin icon `.claude-plugin/icon.png`, which stays on this branch. The directory takes the listing icon only the first time the plugin is saved or submitted there.
+   - It also writes the README images and `social-preview.png` into the git-ignored `.github/assets/`. Copy those to the `readme-assets` branch and push it. Upload `social-preview.png` under Settings → Social preview.
+   - The images stay off this branch because Anthropic's plugin directory checks every image in the plugin. It holds SVGs for review, and it read one of the PNGs as a download-and-run command.
 
 ## Data sources and licences
 
@@ -148,7 +151,7 @@ to your global `~/.claude/CLAUDE.md`.
 - **Palette data:** colorcombinations.org (Caslon Media), CC BY 4.0. Wada plate digitisation by
   Matt DesLauriers (mattdesl), MIT. Sanzo Wada's plates (1933–34) are public domain, and the
   sampled paintings are public-domain works.
-- **README images** (`.github/assets/`): drawn from `data/palettes.csv` with the attributions
+- **README images** (on the [`readme-assets`](https://github.com/youssef4laa/artistic-color-palettes/tree/readme-assets) branch): drawn from `data/palettes.csv` with the attributions
   above. The two kasane strips carry CC BY-SA 4.0. No plate scans or book pages are reproduced.
 - **Plugin icon** (`.claude-plugin/icon.png`): the six layers of *Kasane no irome: Ume-gasane*
   (layered plum) from `data/palettes.csv`, CC BY-SA 4.0 like the other kasane rows.

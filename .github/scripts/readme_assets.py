@@ -1,15 +1,17 @@
 """Generate the README images and the social card from the skill's own data and scripts.
 
-Writes to .github/assets/:
+Writes .claude-plugin/icon.png (1024 x 1024), the plugin directory's listing icon, and, into the
+git-ignored .github/assets/:
   palettes-{light,dark}.png      six real palettes with their provenance labels (and drift note)
   before-after-{light,dark}.png  one mini UI in a typical default palette and in tokens the skill built
   card.html                      source of the social preview
   social-preview.png             card.html at 1280 x 640 (upload under Settings > Social preview)
-and .claude-plugin/icon.png (1024 x 1024), the plugin directory's listing icon.
 
-The images are drawn as SVG and committed as PNG: Anthropic's plugin directory holds SVG files for
-review because an SVG can carry code, and well-formed PNGs pass. Rendering needs Google Chrome or
-Chromium (set CHROME to its path if it is not found).
+Publish those on the readme-assets branch, which the README loads them from. Anthropic's plugin
+directory checks every image in the plugin: it holds SVGs for review because an SVG can carry code,
+and it read the printable text inside one of these PNGs as a download-and-run command, so only the
+icon stays on the release branch. Rendering needs Google Chrome or Chromium (set CHROME to its path
+if it is not found).
 
 Nothing here ships with the skill: both install channels copy only skills/artistic-color-palettes/.
 Run from the repo root:  python3 .github/scripts/readme_assets.py
