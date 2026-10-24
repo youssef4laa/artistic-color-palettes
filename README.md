@@ -37,6 +37,9 @@ scripts are Python 3.10+ standard library only and need no network.
 npx skills add youssef4laa/artistic-color-palettes --skill artistic-color-palettes
 ```
 
+The skill is listed on
+[skills.sh](https://skills.sh/youssef4laa/artistic-color-palettes/artistic-color-palettes).
+
 This installs the skill into the current project for the agents you pick, using the
 [`skills` CLI](https://github.com/vercel-labs/skills). Add `-g` for a user-level install. To update,
 run the same command again: it is idempotent and keeps the links in place. On Windows without
