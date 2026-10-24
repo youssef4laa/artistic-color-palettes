@@ -1,8 +1,0 @@
-schema_version: "1.1"
-name: discovery-brand-colour-near
-expected_outcome: |
-  The brand colour #2A9D8F is fixed and no source is named, so the run looks for palettes in the bundled data that already contain a colour close to it (search.py --near "#2a9d8f", or the hex in the query), shows candidates and stops for the user's choice. No files are written.
-
-  A good result presents 3 to 5 candidates that exist in data/palettes.csv, each with its exact provenance label, and for each names the palette colour that sits near the brand teal (for example Benzol Green #00978d, Peacock Blue #00939b, Light Porcelain Green #00908a or Green Blue #099197) with the measured distance (dE_OK about 0.02-0.05), rather than calling it the same colour. It treats the other colours on each plate as that source's pairing for the teal (Wada's combinations, not colour-wheel geometry such as complementary or triadic), gives hex and OKLCH per colour, one line on fit for a home-care nursing site (calm, trustworthy, readable for older visitors) and a known trap.
-
-  It keeps #2A9D8F itself as the brand colour: the plate's near-teal is not proposed as a replacement, and it says the brand teal will be pinned exactly when tokens are built later. It then asks which candidate to use and stops; it does not pick one and invents nothing.

@@ -1,8 +1,0 @@
-schema_version: "1.1"
-name: no-match-says-so
-expected_outcome: |
-  The run says plainly that the requested items are not in its data and does not invent them: the bundled data covers Wada plates 1-348 only, so "plate 412" does not exist there, and Volume 2 is not in the data, so there is no "Volume 2 spring plate". It also says the mood as written (monochrome and every colour of the rainbow, the smell of rain on a Tuesday) cannot be matched by a search over the data, naming the filters it tried or can try (colour count, mood tags, hue, era, source type) rather than pretending a result exists.
-
-  It does not fabricate a plate number, a plate name, hex values or a "Vol. 2" entry, and does not present an invented palette as Wada's. A good result then offers constructive next steps: real candidates for a spring site found by filter (for example real Wada plates in the 1-348 range with fresh/serene/playful tags, a kasane spring pattern such as Ume-gasane or Fuji, or an editorial palette, each with its exact provenance label), and/or a clearly labelled "Original composition by this skill (not a plate)" shown for review before any use, and asks which direction the user wants. It may also point out the one real reading of the contradictory mood (a near-monochrome, tinted-neutral base with one or two rare hue accents).
-
-  No files are written: no DESIGN.md, palette.json, tokens.css or preview. The run stops for the user's reply.

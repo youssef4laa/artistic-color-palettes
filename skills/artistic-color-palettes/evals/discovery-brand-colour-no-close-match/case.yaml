@@ -1,6 +1,0 @@
-schema_version: "1.1"
-name: discovery-brand-colour-no-close-match
-expected_outcome: |
-  The user wants a Wada plate that "has" #6D28D9, a saturated screen violet. The bundled data has no colour near it: search.py --near "#6d28d9" reports nothing within dE_OK 0.08, and the closest is Blue Violet #6450a1 (on plate 116 and others) at about dE_OK 0.115, a clearly different, greyer violet. No files are written; the run stops for the user's reply.
-
-  A good result says plainly that no Wada plate contains that violet or a colour close to it, names the closest colour the data does have and how far it is, and does not present any plate as having the brand colour. It invents no plate number, name or hex. It then offers concrete ways forward and asks which one: plates holding Blue Violet shown explicitly as a looser match (with their real labels), and/or building the palette around #6D28D9 itself as the user's brand colours ("Original composition (colours supplied by the user)"), possibly using a plate's other colours as pairing ideas labelled as such. It keeps #6D28D9 as the brand colour rather than swapping it for the plate's violet without asking.
