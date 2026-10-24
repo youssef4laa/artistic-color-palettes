@@ -1,50 +1,113 @@
 # artistic-color-palettes
 
-An Agent Skill that gives coding agents real artistic colour palettes in place of their usual
-defaults, then makes those palettes work in a real interface. It searches Sanzo Wada's
-*A Dictionary of Color Combinations* (plates 1–348), Heian *kasane no irome* layered colour
-patterns, palettes sampled from public-domain paintings and editorial palettes from
-colorcombinations.org. You can ask in everyday colour words ("ocean", "pastel pink", "coffee",
-"dark and muted") or start from a brand colour, and it finds palettes that hold a close match. It
-shows 3–5 candidates as applied mini-layouts (light, dark, greyscale) and lets you choose one. It then builds OKLCH ramps, two-tier design tokens, colour proportions,
-measured WCAG 2 and APCA contrast and a composed (not inverted) dark mode, using the perceptual
-principles of Josef Albers' *Interaction of Color*. The result goes into `DESIGN.md`,
-`design/palette.json` and `design/tokens.css`, where neighbouring design skills can read it. It
-never invents a plate, painting or pattern, and every palette carries its provenance. The bundled
+**Real artistic colour palettes for coding agents, made into working UI colour systems.** An Agent
+Skill for Claude Code, Codex, Cursor, Gemini CLI, GitHub Copilot, OpenCode and other agents that read
+`SKILL.md`.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/palettes-dark.svg">
+  <img alt="Six palettes from the skill's data: Wada plates 218 and 288, the kasane patterns Ume-gasane and Kaede momiji, and colours sampled from The Starry Night and The Great Wave, each with its provenance label" src=".github/assets/palettes-light.svg" width="880">
+</picture>
+
+It replaces an agent's usual default colours with palettes that have a real source. Those sources
+are Sanzo Wada's *A Dictionary of Color Combinations* (plates 1–348), Heian *kasane no irome*
+layered colour patterns, palettes sampled from public-domain paintings, and editorial palettes from
+colorcombinations.org.
+
+You can ask in everyday colour words ("ocean", "pastel pink", "coffee", "dark and muted") or start
+from a brand colour, and it finds palettes that hold a close match. It shows 3–5 candidates as
+applied mini-layouts in light, dark and greyscale, and lets you choose one.
+
+It then builds:
+- OKLCH ramps and two-tier design tokens
+- colour proportions
+- measured WCAG 2 and APCA contrast
+- a composed (not inverted) dark mode
+
+These follow the perceptual principles of Josef Albers' *Interaction of Color*. The result goes into
+`DESIGN.md`, `design/palette.json` and `design/tokens.css`, where neighbouring design skills can
+read it.
+
+It never invents a plate, painting or pattern, and every palette carries its provenance. The bundled
 scripts are Python 3.10+ standard library only and need no network.
 
 ## Install
 
-Both channels were tested locally on 2026-10-23 (Claude Code 2.1.296; `skills` CLI via npx).
+```bash
+npx skills add youssef4laa/artistic-color-palettes --skill artistic-color-palettes
+```
+
+This installs the skill into the current project for the agents you pick, using the
+[`skills` CLI](https://github.com/vercel-labs/skills). Add `-g` for a user-level install. To update,
+run the same command again: it is idempotent and keeps the links in place. On Windows without
+symlink support, add `--copy`.
 
 **Claude Code plugin marketplace**
 
 ```bash
-# from GitHub (after the repo is public)
 claude plugin marketplace add youssef4laa/artistic-color-palettes
 claude plugin install artistic-color-palettes@artistic-color-palettes
-
-# from a local clone (this is the form that was tested)
-claude plugin marketplace add D:/path/to/artistic-color-palettes
-claude plugin install artistic-color-palettes@artistic-color-palettes
 ```
 
-Inside a session the same steps are `/plugin marketplace add youssef4laa/artistic-color-palettes`
-and `/plugin install artistic-color-palettes@artistic-color-palettes`.
+Inside a session, the same steps are `/plugin marketplace add youssef4laa/artistic-color-palettes`
+and `/plugin install artistic-color-palettes@artistic-color-palettes`. The plugin installs only
+`skills/artistic-color-palettes/`.
 
-**skills.sh**
+To install from a local clone, use either command with the clone's path, for example
+`npx skills add ./artistic-color-palettes --skill artistic-color-palettes`.
+
+## Works in your agent
+
+Tested on 2026-10-24 on macOS with `skills` CLI 1.7.4 and Claude Code 2.1.300. Fourteen agents were
+checked at project and user level:
+- every link resolves;
+- `SKILL.md` passes the Agent Skills spec;
+- the scripts run through each agent's path;
+- the full test suite passes through the symlink.
+
+Claude Code was also tested in a live session: it loaded the skill through the symlink, ran the
+search and stopped for a choice. The plugin channel was tested on 2026-10-23 on Windows (Claude
+Code 2.1.296).
+
+| Agent | Project install (`npx skills add`) | User install (`-g`) |
+|---|---|---|
+| Claude Code | `.claude/skills/` → symlink to `.agents/skills/` | `~/.claude/skills/` → symlink |
+| Cline, Codex, Kimi Code CLI, Pi, Warp, Zed | `.agents/skills/` | `~/.agents/skills/` |
+| Amp, Cursor, Droid, Gemini CLI, GitHub Copilot, Kilo Code, OpenCode | `.agents/skills/` | `~/.agents/skills/` (see below) |
+
+The `skills` CLI lists a user folder of its own for the last row's agents, for example
+`~/.cursor/skills/`, `~/.gemini/skills/` and `~/.config/opencode/skills/`. With `-g`, though, it
+writes only to `~/.agents/skills/`. If your agent doesn't pick the skill up after a user-level
+install, link it in yourself. The scripts were tested through relative and absolute links:
 
 ```bash
-# from GitHub (after the repo is public)
-npx skills add youssef4laa/artistic-color-palettes --skill artistic-color-palettes
-
-# from a local clone, into the current project (tested)
-npx skills add D:/path/to/artistic-color-palettes --skill artistic-color-palettes
+mkdir -p ~/.cursor/skills && ln -s ~/.agents/skills/artistic-color-palettes ~/.cursor/skills/
 ```
 
-Add `-g` for a user-level install. Then ask for a palette, a theme, brand colours, a dark mode,
-design tokens, or "make this look less generic". The skill lives in
-`skills/artistic-color-palettes/`; start with its `SKILL.md`.
+## See it
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/before-after-dark.svg">
+  <img alt="The same landing page twice. Left: a typical indigo-to-purple default where the white button label measures 4.47:1, under the 4.5:1 minimum. Right: tokens the skill built from Wada plate 229, golden yellow with deep slate olive, where the button label measures 13.63:1 in light mode" src=".github/assets/before-after-light.svg" width="880">
+</picture>
+
+The right-hand side is real output: `build_tokens.py --palette wada-229 --strategy committed --mode
+persuade` followed by `validate.py --fix`. With GitHub in dark mode, the image shows the composed
+dark theme. The images are regenerated by
+[`.github/scripts/readme_assets.py`](.github/scripts/readme_assets.py).
+
+## Try it
+
+Ask your agent:
+
+- "Find me a palette for a coffee roastery landing page."
+- "Our brand teal is #2a9d8f. Which real palettes hold something close?"
+- "Give this dashboard a restrained Wada palette with a proper dark mode."
+- "Use the kasane pattern Kaede momiji for an autumn landing page and write the tokens."
+- "Make the colours look less generic."
+
+The skill lives in `skills/artistic-color-palettes/`. Start with its
+[`SKILL.md`](skills/artistic-color-palettes/SKILL.md).
 
 ## Works with
 
@@ -70,6 +133,7 @@ to your global `~/.claude/CLAUDE.md`.
 4. Optional: submit the plugin to Anthropic's directory (PR to `anthropics/claude-plugins-official`).
 5. Keep `skills/artistic-color-palettes/data/SNAPSHOT.md` dated whenever the data is refreshed, and bump the version in `plugin.json`, `marketplace.json` and the `SKILL.md` frontmatter together.
 6. The marketplace entry installs only `skills/artistic-color-palettes/`. Maintainer material (`notes/`: build notes, eval sets and reviews; `data-raw/`: the raw data snapshot that `scripts/build_data.py` reads) lives on the `sources` branch. Its README explains how to rebuild the data from a worktree of that branch.
+7. After changing the data or the demo palette, re-run `python3 .github/scripts/readme_assets.py`. Then render `.github/assets/card.html` to `social-preview.png` at 1280×640 and upload it under Settings → Social preview.
 
 ## Data sources and licences
 
@@ -81,6 +145,8 @@ to your global `~/.claude/CLAUDE.md`.
 - **Palette data:** colorcombinations.org (Caslon Media), CC BY 4.0. Wada plate digitisation by
   Matt DesLauriers (mattdesl), MIT. Sanzo Wada's plates (1933–34) are public domain, and the
   sampled paintings are public-domain works.
+- **README images** (`.github/assets/`): drawn from `data/palettes.csv` with the attributions
+  above. The two kasane strips carry CC BY-SA 4.0. No plate scans or book pages are reproduced.
 - **Books:** ideas from Wada's *A Dictionary of Color Combinations* (Seigensha reprint) and
   Albers' *Interaction of Color* are paraphrased with page or chapter citations. No plates,
   diagrams or long quotations are reproduced.

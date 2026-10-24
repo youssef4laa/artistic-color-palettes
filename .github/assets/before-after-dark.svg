@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="372" viewBox="0 0 880 372" role="img" aria-label="The same landing page in a typical default palette and in tokens the skill built from Wada plate 229">
+<style>text{font-family:ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, 'Hiragino Sans', 'Noto Sans CJK JP', sans-serif}</style>
+<text x="0" y="16" font-size="13" font-weight="600" fill="#9198a1">A typical default</text>
+<text x="460" y="16" font-size="13" font-weight="600" fill="#f0f6fc">Wada plate 229, built by the skill · Committed · Persuade</text>
+<linearGradient id="gdarkd" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#6366f1"/><stop offset="1" stop-color="#a855f7"/></linearGradient>
+<clipPath id="gdarkdc"><rect x="0" y="30" width="420" height="268" rx="12"/></clipPath>
+<g clip-path="url(#gdarkdc)">
+<rect x="0" y="30" width="420" height="268" fill="#0f172a"/>
+<circle cx="26" cy="54" r="7" fill="#6366f1"/>
+<text x="40" y="59" font-size="13" font-weight="700" fill="#e2e8f0">Kiln</text>
+<text x="250" y="59" font-size="11.5" fill="#94a3b8">Glazes</text>
+<text x="306" y="59" font-size="11.5" fill="#94a3b8">Studio</text>
+<text x="362" y="59" font-size="11.5" fill="#94a3b8">Visit</text>
+<rect x="0" y="78" width="420" height="104" fill="url(#gdarkd)"/>
+<text x="24" y="120" font-size="21" font-weight="700" fill="#ffffff">Small-batch glazes,</text>
+<text x="24" y="146" font-size="21" font-weight="700" fill="#ffffff">fired every week.</text>
+<text x="24" y="210" font-size="12.5" fill="#e2e8f0">Twelve glazes, mixed by hand and tested on real clay.</text>
+<text x="24" y="228" font-size="12.5" fill="#94a3b8">Ships in 3 days. Free returns on unused sets.</text>
+<rect x="24" y="246" width="118" height="34" rx="8" fill="#6366f1"/>
+<text x="83" y="268" font-size="13" font-weight="600" text-anchor="middle" fill="#ffffff">Order a set</text>
+<rect x="152.5" y="246.5" width="117" height="33" rx="8" fill="none" stroke="#1e293b"/>
+<text x="211" y="268" font-size="13" font-weight="600" text-anchor="middle" fill="#e2e8f0">See the kiln</text>
+</g>
+<clipPath id="gdarkac"><rect x="460" y="30" width="420" height="268" rx="12"/></clipPath>
+<g clip-path="url(#gdarkac)">
+<rect x="460" y="30" width="420" height="268" fill="#110c08"/>
+<circle cx="486" cy="54" r="7" fill="#5a6c54"/>
+<text x="500" y="59" font-size="13" font-weight="700" fill="#f5f1ee">Kiln</text>
+<text x="710" y="59" font-size="11.5" fill="#c8bfb8">Glazes</text>
+<text x="766" y="59" font-size="11.5" fill="#c8bfb8">Studio</text>
+<text x="822" y="59" font-size="11.5" fill="#c8bfb8">Visit</text>
+<rect x="460" y="78" width="420" height="104" fill="#f3a257"/>
+<text x="484" y="120" font-size="21" font-weight="700" fill="#110c08">Small-batch glazes,</text>
+<text x="484" y="146" font-size="21" font-weight="700" fill="#110c08">fired every week.</text>
+<text x="484" y="210" font-size="12.5" fill="#f5f1ee">Twelve glazes, mixed by hand and tested on real clay.</text>
+<text x="484" y="228" font-size="12.5" fill="#c8bfb8">Ships in 3 days. Free returns on unused sets.</text>
+<rect x="484" y="246" width="118" height="34" rx="8" fill="#5a6c54"/>
+<text x="543" y="268" font-size="13" font-weight="600" text-anchor="middle" fill="#ffffff">Order a set</text>
+<rect x="612.5" y="246.5" width="117" height="33" rx="8" fill="none" stroke="#6f645b"/>
+<text x="671" y="268" font-size="13" font-weight="600" text-anchor="middle" fill="#f5f1ee">See the kiln</text>
+</g>
+<rect x="0.5" y="30.5" width="419" height="267" rx="12" fill="none" stroke="#3d444d"/>
+<rect x="460.5" y="30.5" width="419" height="267" rx="12" fill="none" stroke="#3d444d"/>
+<text x="0" y="322" font-size="11.5" fill="#9198a1">Button label 4.47:1 (under 4.5:1) · Large heading 3.96:1 · Body 14.48:1</text>
+<text x="460" y="322" font-size="11.5" fill="#9198a1">Button label 5.66:1 · Large heading 9.37:1 · Body 17.32:1</text>
+<text x="0" y="356" font-size="11.5" fill="#9198a1">Right: roles from build_tokens.py and validate.py --fix (dark mode). WCAG 2 ratios from the skill's colorlib; minimums 4.5:1 text, 3:1 large text.</text>
+</svg>

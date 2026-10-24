@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="536" viewBox="0 0 880 536" role="img" aria-label="Six palettes from the skill's data, each with its provenance label">
+<style>text{font-family:ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, 'Hiragino Sans', 'Noto Sans CJK JP', sans-serif} .hex{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;font-size:10.5px}</style>
+<clipPath id="c0"><rect x="0" y="0" width="432" height="168" rx="10"/></clipPath>
+<rect x="0" y="0" width="432" height="168" rx="10" fill="#151b23"/>
+<rect x="0.00" y="0" width="144.50" height="76" fill="#005b8d" clip-path="url(#c0)"/>
+<text class="hex" x="8.00" y="67" fill="#ffffff">#005b8d</text>
+<rect x="144.00" y="0" width="144.50" height="76" fill="#b5b1d8" clip-path="url(#c0)"/>
+<text class="hex" x="152.00" y="67" fill="#000000">#b5b1d8</text>
+<rect x="288.00" y="0" width="144.50" height="76" fill="#70727c" clip-path="url(#c0)"/>
+<text class="hex" x="296.00" y="67" fill="#ffffff">#70727c</text>
+<rect x="0.5" y="0.5" width="431" height="167" rx="10" fill="none" stroke="#3d444d"/>
+<text x="14" y="100" font-size="14" font-weight="600" fill="#f0f6fc">Helvetia Blue &amp; Grayish Lavender - A</text>
+<text x="14" y="119" font-size="11.5" fill="#9198a1">Wada plate 218 (<tspan font-style="italic">A Dictionary of Color Combinations</tspan>, 1933)</text>
+<clipPath id="c1"><rect x="448" y="0" width="432" height="168" rx="10"/></clipPath>
+<rect x="448" y="0" width="432" height="168" rx="10" fill="#151b23"/>
+<rect x="448.00" y="0" width="108.50" height="76" fill="#f99d1b" clip-path="url(#c1)"/>
+<text class="hex" x="456.00" y="67" fill="#000000">#f99d1b</text>
+<rect x="556.00" y="0" width="108.50" height="76" fill="#644b1e" clip-path="url(#c1)"/>
+<text class="hex" x="564.00" y="67" fill="#ffffff">#644b1e</text>
+<rect x="664.00" y="0" width="108.50" height="76" fill="#7a4456" clip-path="url(#c1)"/>
+<text class="hex" x="672.00" y="67" fill="#ffffff">#7a4456</text>
+<rect x="772.00" y="0" width="108.50" height="76" fill="#111314" clip-path="url(#c1)"/>
+<text class="hex" x="780.00" y="67" fill="#ffffff">#111314</text>
+<rect x="448.5" y="0.5" width="431" height="167" rx="10" fill="none" stroke="#3d444d"/>
+<text x="462" y="100" font-size="14" font-weight="600" fill="#f0f6fc">Yellow Orange &amp; Sepia</text>
+<text x="462" y="119" font-size="11.5" fill="#9198a1">Wada plate 288 (<tspan font-style="italic">A Dictionary of Color Combinations</tspan>, 1933)</text>
+<clipPath id="c2"><rect x="0" y="184" width="432" height="168" rx="10"/></clipPath>
+<rect x="0" y="184" width="432" height="168" rx="10" fill="#151b23"/>
+<rect x="0.00" y="184" width="72.50" height="76" fill="#391336" clip-path="url(#c2)"/>
+<text class="hex" x="8.00" y="251" fill="#ffffff">#391336</text>
+<rect x="72.00" y="184" width="72.50" height="76" fill="#640a25" clip-path="url(#c2)"/>
+<text class="hex" x="80.00" y="251" fill="#ffffff">#640a25</text>
+<rect x="144.00" y="184" width="72.50" height="76" fill="#c91f37" clip-path="url(#c2)"/>
+<text class="hex" x="152.00" y="251" fill="#ffffff">#c91f37</text>
+<rect x="216.00" y="184" width="72.50" height="76" fill="#db5a6b" clip-path="url(#c2)"/>
+<text class="hex" x="224.00" y="251" fill="#000000">#db5a6b</text>
+<rect x="288.00" y="184" width="72.50" height="76" fill="#f99ba2" clip-path="url(#c2)"/>
+<text class="hex" x="296.00" y="251" fill="#000000">#f99ba2</text>
+<rect x="360.00" y="184" width="72.50" height="76" fill="#fecbcd" clip-path="url(#c2)"/>
+<text class="hex" x="368.00" y="251" fill="#000000">#fecbcd</text>
+<rect x="0.5" y="184.5" width="431" height="167" rx="10" fill="none" stroke="#3d444d"/>
+<text x="14" y="284" font-size="14" font-weight="600" fill="#f0f6fc">Ume-gasane (Layered plum) 梅重</text>
+<text x="14" y="303" font-size="11.5" fill="#9198a1">Kasane no irome: Ume-gasane (Heian court colour layering; hex</text>
+<text x="14" y="318" font-size="11.5" fill="#9198a1">values are interpretations)</text>
+<clipPath id="c3"><rect x="448" y="184" width="432" height="168" rx="10"/></clipPath>
+<rect x="448" y="184" width="432" height="168" rx="10" fill="#151b23"/>
+<rect x="448.00" y="184" width="86.90" height="76" fill="#7e2639" clip-path="url(#c3)"/>
+<text class="hex" x="456.00" y="251" fill="#ffffff">#7e2639</text>
+<rect x="534.40" y="184" width="86.90" height="76" fill="#c91f37" clip-path="url(#c3)"/>
+<text class="hex" x="542.40" y="251" fill="#ffffff">#c91f37</text>
+<rect x="620.80" y="184" width="86.90" height="76" fill="#f5b186" clip-path="url(#c3)"/>
+<text class="hex" x="628.80" y="251" fill="#000000">#f5b186</text>
+<rect x="707.20" y="184" width="86.90" height="76" fill="#f3c13a" clip-path="url(#c3)"/>
+<text class="hex" x="715.20" y="251" fill="#000000">#f3c13a</text>
+<rect x="793.60" y="184" width="86.90" height="76" fill="#64886c" clip-path="url(#c3)"/>
+<text class="hex" x="801.60" y="251" fill="#000000">#64886c</text>
+<rect x="448.5" y="184.5" width="431" height="167" rx="10" fill="none" stroke="#3d444d"/>
+<text x="462" y="284" font-size="14" font-weight="600" fill="#f0f6fc">Kaede momiji (Maple foliage) 楓紅葉</text>
+<text x="462" y="303" font-size="11.5" fill="#9198a1">Kasane no irome: Kaede momiji (Heian court colour layering; hex</text>
+<text x="462" y="318" font-size="11.5" fill="#9198a1">values are interpretations)</text>
+<clipPath id="c4"><rect x="0" y="368" width="432" height="168" rx="10"/></clipPath>
+<rect x="0" y="368" width="432" height="168" rx="10" fill="#151b23"/>
+<rect x="0.00" y="368" width="72.50" height="76" fill="#b19e2d" clip-path="url(#c4)"/>
+<text class="hex" x="8.00" y="435" fill="#000000">#b19e2d</text>
+<rect x="72.00" y="368" width="72.50" height="76" fill="#5272a1" clip-path="url(#c4)"/>
+<text class="hex" x="80.00" y="435" fill="#ffffff">#5272a1</text>
+<rect x="144.00" y="368" width="72.50" height="76" fill="#344b91" clip-path="url(#c4)"/>
+<text class="hex" x="152.00" y="435" fill="#ffffff">#344b91</text>
+<rect x="216.00" y="368" width="72.50" height="76" fill="#28378d" clip-path="url(#c4)"/>
+<text class="hex" x="224.00" y="435" fill="#ffffff">#28378d</text>
+<rect x="288.00" y="368" width="72.50" height="76" fill="#272822" clip-path="url(#c4)"/>
+<text class="hex" x="296.00" y="435" fill="#ffffff">#272822</text>
+<rect x="360.00" y="368" width="72.50" height="76" fill="#151919" clip-path="url(#c4)"/>
+<text class="hex" x="368.00" y="435" fill="#ffffff">#151919</text>
+<rect x="0.5" y="368.5" width="431" height="167" rx="10" fill="none" stroke="#3d444d"/>
+<text x="14" y="468" font-size="14" font-weight="600" fill="#f0f6fc">The Starry Night — Vincent van Gogh</text>
+<text x="14" y="487" font-size="11.5" fill="#9198a1">Sampled from The Starry Night, Vincent van Gogh, 1889 by</text>
+<text x="14" y="502" font-size="11.5" fill="#9198a1">colorcombinations.org</text>
+<clipPath id="c5"><rect x="448" y="368" width="432" height="168" rx="10"/></clipPath>
+<rect x="448" y="368" width="432" height="168" rx="10" fill="#151b23"/>
+<rect x="448.00" y="368" width="72.50" height="76" fill="#f6efd9" clip-path="url(#c5)"/>
+<text class="hex" x="456.00" y="435" fill="#000000">#f6efd9</text>
+<rect x="520.00" y="368" width="72.50" height="76" fill="#f8eac7" clip-path="url(#c5)"/>
+<text class="hex" x="528.00" y="435" fill="#000000">#f8eac7</text>
+<rect x="592.00" y="368" width="72.50" height="76" fill="#dce7d9" clip-path="url(#c5)"/>
+<text class="hex" x="600.00" y="435" fill="#000000">#dce7d9</text>
+<rect x="664.00" y="368" width="72.50" height="76" fill="#e5b696" clip-path="url(#c5)"/>
+<text class="hex" x="672.00" y="435" fill="#000000">#e5b696</text>
+<rect x="736.00" y="368" width="72.50" height="76" fill="#2c638c" clip-path="url(#c5)"/>
+<text class="hex" x="744.00" y="435" fill="#ffffff">#2c638c</text>
+<rect x="808.00" y="368" width="72.50" height="76" fill="#223f63" clip-path="url(#c5)"/>
+<text class="hex" x="816.00" y="435" fill="#ffffff">#223f63</text>
+<rect x="448.5" y="368.5" width="431" height="167" rx="10" fill="none" stroke="#3d444d"/>
+<text x="462" y="468" font-size="14" font-weight="600" fill="#f0f6fc">The Great Wave — Katsushika Hokusai</text>
+<text x="462" y="487" font-size="11.5" fill="#9198a1">Sampled from Under the Wave off Kanagawa (The Great Wave),</text>
+<text x="462" y="502" font-size="11.5" fill="#9198a1">Katsushika Hokusai, c. 1831 by colorcombinations.org</text>
+<text x="462" y="524" font-size="11" font-style="italic" fill="#9198a1">Drift: sampled as the work looks today, not the artist's original colours.</text>
+</svg>
