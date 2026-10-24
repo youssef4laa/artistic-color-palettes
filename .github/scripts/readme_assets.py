@@ -1,9 +1,15 @@
 """Generate the README images and the social card from the skill's own data and scripts.
 
 Writes to .github/assets/:
-  palettes-{light,dark}.svg      six real palettes with their provenance labels (and drift note)
-  before-after-{light,dark}.svg  one mini UI in a typical default palette and in tokens the skill built
-  card.html                      source for the social preview / LinkedIn image (render with headless Chrome)
+  palettes-{light,dark}.png      six real palettes with their provenance labels (and drift note)
+  before-after-{light,dark}.png  one mini UI in a typical default palette and in tokens the skill built
+  card.html                      source of the social preview
+  social-preview.png             card.html at 1280 x 640 (upload under Settings > Social preview)
+and .claude-plugin/icon.png (1024 x 1024), the plugin directory's listing icon.
+
+The images are drawn as SVG and committed as PNG: Anthropic's plugin directory holds SVG files for
+review because an SVG can carry code, and well-formed PNGs pass. Rendering needs Google Chrome or
+Chromium (set CHROME to its path if it is not found).
 
 Nothing here ships with the skill: both install channels copy only skills/artistic-color-palettes/.
 Run from the repo root:  python3 .github/scripts/readme_assets.py
@@ -12,7 +18,9 @@ from __future__ import annotations
 
 import csv
 import json
+import os
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -226,16 +234,63 @@ def card_html(pals: list[dict], tokens: dict) -> str:
 """
 
 
+def icon_html() -> str:
+    """Plugin icon: the six layers of Kasane no irome: Ume-gasane (layered plum), outermost first."""
+    rows = {r["id"]: r for r in csv.DictReader(open(SKILL / "data" / "palettes.csv", encoding="utf-8"))}
+    layers = []
+    for h in rows["kasane-ume-gasane"]["colors"].split(";"):
+        if h not in layers:
+            layers.append(h)
+    divs = [f'<div style="position:absolute;inset:0;background:{layers[0]}"></div>']
+    for i, h in enumerate(layers[1:], 1):
+        inset, radius = 82 * i, max(150 - 18 * i, 24)
+        divs.append(f'<div style="position:absolute;inset:{inset}px;border-radius:{radius}px;background:{h}"></div>')
+    return ('<!doctype html><html><body style="margin:0;width:1024px;height:1024px;position:relative;overflow:hidden">'
+            + "".join(divs) + "</body></html>")
+
+
+def find_chrome() -> str:
+    candidates = [os.environ.get("CHROME", ""), "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+                  "google-chrome", "chromium", "chromium-browser", "chrome"]
+    for c in candidates:
+        if c and (Path(c).is_file() or shutil.which(c)):
+            return c
+    sys.exit("Google Chrome or Chromium is needed to render the PNGs; set CHROME to its path")
+
+
+def screenshot(chrome: str, page: Path, png: Path, w: int, h: int, scale: int, transparent: bool) -> None:
+    args = [chrome, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--allow-file-access-from-files",
+            f"--window-size={w},{h}", f"--force-device-scale-factor={scale}", f"--screenshot={png}"]
+    if transparent:
+        args.append("--default-background-color=00000000")
+    subprocess.run([*args, page.as_uri()], check=True, capture_output=True, timeout=120)
+
+
+def svg_to_png(chrome: str, svg: str, png: Path, tmp: Path) -> None:
+    """Render at 2x on a transparent ground, so the PNG looks like the SVG in either GitHub theme."""
+    w, h = (int(v) for v in re.search(r'width="(\d+)" height="(\d+)"', svg).groups())
+    (tmp / "img.svg").write_text(svg, encoding="utf-8")
+    page = tmp / "img.html"
+    page.write_text(f'<!doctype html><html><body style="margin:0;background:transparent">'
+                    f'<img src="img.svg" width="{w}" height="{h}" style="display:block"></body></html>', encoding="utf-8")
+    screenshot(chrome, page, png, w, h, 2, True)
+
+
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
+    chrome = find_chrome()
     pals = load_palettes()
     tokens = build_demo_tokens()
     if not tokens["contrast"]["gate_pass"]:
         sys.exit("demo tokens fail the WCAG gate; pick another demo palette")
-    for theme in ("light", "dark"):
-        (OUT / f"palettes-{theme}.svg").write_text(palettes_svg(pals, theme) + "\n", encoding="utf-8")
-        (OUT / f"before-after-{theme}.svg").write_text(before_after_svg(tokens, theme) + "\n", encoding="utf-8")
+    with tempfile.TemporaryDirectory() as tmp:
+        for theme in ("light", "dark"):
+            svg_to_png(chrome, palettes_svg(pals, theme), OUT / f"palettes-{theme}.png", Path(tmp))
+            svg_to_png(chrome, before_after_svg(tokens, theme), OUT / f"before-after-{theme}.png", Path(tmp))
+        (Path(tmp) / "icon.html").write_text(icon_html(), encoding="utf-8")
+        screenshot(chrome, Path(tmp) / "icon.html", REPO / ".claude-plugin" / "icon.png", 1024, 1024, 1, False)
     (OUT / "card.html").write_text(card_html(pals, tokens), encoding="utf-8")
+    screenshot(chrome, OUT / "card.html", OUT / "social-preview.png", 1280, 640, 1, False)
     print("wrote", ", ".join(sorted(p.name for p in OUT.iterdir())))
 
 
