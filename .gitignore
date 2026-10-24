@@ -12,3 +12,5 @@ __pycache__/
 **/wada-pages/
 data-raw/**/*.png
 data-raw/**/*.jpg
+# README images and the social preview are generated here and published on the readme-assets branch
+.github/assets/
