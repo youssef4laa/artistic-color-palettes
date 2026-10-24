@@ -518,6 +518,27 @@ def validate_tokens(tokens: dict, do_fix: bool = False, adjacency: list[tuple[st
     return block
 
 
+APCA_GROUP_LIMIT = 4  # more shortfall groups than this in one mode -> collapse by role family in the text report
+
+
+def role_family(role: str) -> str:
+    """Coarse family for collapsing APCA shortfalls in the text report."""
+    for s in ("success", "warning", "danger", "info"):
+        if role == s or role.startswith(s + "-") or role.startswith("on-" + s):
+            return "status roles"
+    if role.startswith("voice-") or role.startswith("on-voice"):
+        return "voice roles"
+    if role.startswith("border"):
+        return "borders"
+    if role == "focus":
+        return "focus ring"
+    if role.startswith(("accent", "on-accent", "action", "on-action")):
+        return "accent roles"
+    if role.startswith("text"):
+        return "text"
+    return "other roles"
+
+
 def fmt_lc(v: float) -> str:
     """One decimal, or two when one decimal would hide the difference (stored values already carry that precision)."""
     return f"{v:.1f}" if abs(round(v, 1) - v) < 1e-9 else f"{v:.2f}"
@@ -544,22 +565,44 @@ def text_report(tokens: dict, show_all: bool) -> str:
         groups: dict[tuple, list] = {}
         for p in misses:
             groups.setdefault((p["mode"], p["fg"], p["apca_target"]), []).append(p)
-        for (mode, fg, target), ps in groups.items():
-            lcs = [abs(p["apca"]) for p in ps]
-            rng = fmt_lc(min(lcs)) if fmt_lc(min(lcs)) == fmt_lc(max(lcs)) else f"{fmt_lc(min(lcs))}-{fmt_lc(max(lcs))}"
-            lines.append(f"  [{mode}] {fg} on {', '.join(p['bg'] for p in ps)}: Lc {rng} < {target}")
+        per_mode: dict[str, int] = {}
+        for (mode, _fg, _t) in groups:
+            per_mode[mode] = per_mode.get(mode, 0) + 1
+        for mode in sorted(per_mode, key=lambda m: (m != "light", m)):
+            mode_groups = {k: v for k, v in groups.items() if k[0] == mode}
+            if show_all or per_mode[mode] <= APCA_GROUP_LIMIT:
+                for (_m, fg, target), ps in mode_groups.items():
+                    lcs = [abs(p["apca"]) for p in ps]
+                    rng = fmt_lc(min(lcs)) if fmt_lc(min(lcs)) == fmt_lc(max(lcs)) else f"{fmt_lc(min(lcs))}-{fmt_lc(max(lcs))}"
+                    lines.append(f"  [{mode}] {fg} on {', '.join(p['bg'] for p in ps)}: Lc {rng} < {target}")
+                continue
+            # many shortfalls: one line per role family with its worst pair (--all lists every pair)
+            fams: dict[str, list] = {}
+            for (_m, fg, _t), ps in mode_groups.items():
+                fams.setdefault(role_family(fg), []).extend(ps)
+            for fam, ps in fams.items():
+                worst = max(ps, key=lambda p: p["apca_target"] - abs(p["apca"]))
+                roles = sorted({p["fg"] for p in ps})
+                lines.append(f"  [{mode}] {fam} ({len(ps)} pairs: {', '.join(roles)}): worst {worst['fg']} on {worst['bg']} "
+                             f"Lc {fmt_lc(abs(worst['apca']))} < {worst['apca_target']}")
+            lines.append(f"  [{mode}] (--all lists every pair)")
     if c["flags"]:
         lines.append("")
-        lines.append("FLAGS")
+        lines.append("FLAGS (advice per flag type follows the list)")
+        advice: dict[str, str] = {}
         for f in c["flags"]:
             if f["type"] == "cvd":
                 low = ", ".join(f"{k} {v}" for k, v in f["delta_e_ok"].items())
-                lines.append(f"  [{f['mode']}] cvd: {f['a']} vs {f['b']} dE_OK under {low} (normal vision {f['normal_delta_e_ok']}) - {f['advice']}")
+                lines.append(f"  [{f['mode']}] cvd: {f['a']} vs {f['b']} dE_OK under {low} (normal vision {f['normal_delta_e_ok']})")
             elif f["type"] == "mid_lightness_fill":
                 lines.append(f"  [{f['mode']}] mid-lightness fill {f['a']} (L {f['L']}): white {f['white']}:1 vs neutral-950 {f['neutral_950']}:1 measured")
             else:
                 hd = f"hue diff {f['hue_diff']}, " if f.get("hue_diff") is not None else ""
-                lines.append(f"  [{f['mode']}] {f['type']}: {f['a']} vs {f['b']} ({hd}dL {f['dL']}) - {f['advice']}")
+                lines.append(f"  [{f['mode']}] {f['type']}: {f['a']} vs {f['b']} ({hd}dL {f['dL']})")
+            if f.get("advice"):
+                advice.setdefault(f["type"].replace("_", " ").replace("mid lightness fill", "mid-lightness fill"), f["advice"])
+        for kind, text in advice.items():
+            lines.append(f"  advice, {kind}: {text}")
     if tokens.get("adjustments"):
         lines.append("")
         lines.append("ADJUSTMENTS (lightness only; nothing else moved)")

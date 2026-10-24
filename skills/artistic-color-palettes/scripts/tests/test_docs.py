@@ -1,4 +1,4 @@
-"""Doc test: the numbers quoted in references/style-recipes.md worked examples (a) and (c) are the
+"""Doc test: the numbers quoted in references/worked-examples.md examples (a) and (c) are the
 numbers the shipped scripts produce.
 
 Rebuilds each example with build_tokens.py + validate.py --fix --in-place and asserts that every hex,
@@ -20,7 +20,7 @@ from pathlib import Path
 TESTS = Path(__file__).resolve().parent
 SCRIPTS = TESTS.parent
 SKILL = SCRIPTS.parent
-RECIPES = SKILL / "references" / "style-recipes.md"
+RECIPES = SKILL / "references" / "worked-examples.md"
 
 HEX = re.compile(r"#[0-9a-fA-F]{6}\b")
 RATIO = re.compile(r"(?<![\d.])(\d+(?:\.\d+)?):1\b")
@@ -28,12 +28,12 @@ STEPPED = re.compile(r"\b(neutral|accent|voice-\d)-(\d{2,3})\s+`(#[0-9a-fA-F]{6}
 
 EXAMPLES = {
     "a": {
-        "heading": r"## 2\. Worked example \(a\)",
-        "next": r"## 3\. ",
+        "heading": r"## 1\. Worked example \(a\)",
+        "next": r"## 2\. ",
         "args": ["--palette", "wada-218", "--strategy", "restrained", "--mode", "operate"],
     },
     "c": {
-        "heading": r"## 4\. Worked example \(c\)",
+        "heading": r"## 3\. Worked example \(c\)",
         "next": None,
         "args": ["--palette", "paint-the-milkmaid", "--strategy", "restrained", "--mode", "read"],
     },

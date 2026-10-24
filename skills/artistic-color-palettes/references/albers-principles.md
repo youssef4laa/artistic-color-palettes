@@ -10,6 +10,27 @@ a palette that looked fine as swatches fails in a layout. `L`, `C`, `h` are OKLC
 chroma and hue (degrees); `ΔL` is the absolute difference in L. A "surface" is any role that other
 roles sit on (page, card, panel).
 
+## Index by validator flag
+
+Each `validate.py` flag maps to one principle below; read that section (line numbers are exact for this file) rather than the whole file.
+
+| Flag or question | Principle | Starts at line |
+|---|---|---|
+| vibrating | 12 Contrasting hues at equal lightness vibrate | 201 |
+| vanishing (adjacent fills) | 13 Related hues at equal lightness lose their boundary: the mid-lightness trap | 216 |
+| mid-lightness fill | 13 Related hues at equal lightness lose their boundary: the mid-lightness trap | 216 |
+| state_sibling (faint hover / pressed) | 3 A ground subtracts its own hue and lightness | 62 |
+| cvd (colour as the only signal) | 2 Lightness has to be measured, not judged by eye | 49 |
+| translucent token | 5 Translucency is an illusion of overlap; stacked layers are unpredictable | 90 |
+| dark-mode intervals, order flips | 7 Relationships survive a change of key if intervals are kept | 123 |
+| ramp step spacing | 10 Equal-looking steps need unequal physical steps | 170 |
+| neutral tint / temperature | 11 Warm and cool are relative and unreliable as structure | 187 |
+| quantity, accent share | 9 Quantity is part of the colour | 153 |
+| line colours (borders, grid) | 6 Change the thin, recurring colour and the whole changes | 109 |
+| a colour looks different per surface | 1 A colour has no fixed appearance; its ground decides | 34 |
+| grey on a saturated surface | 4 Neighbours push each other toward the opposite | 76 |
+| midpoint tokens | 8 The true middle is equidistant in lightness and hue | 139 |
+
 ## 1. A colour has no fixed appearance; its ground decides (ch. IV, VI, XXV "Relativity")
 
 - **Principle.** The same colour looks different depending on what surrounds it, shifting in

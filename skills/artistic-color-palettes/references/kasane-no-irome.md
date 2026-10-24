@@ -83,285 +83,50 @@ Layer order below is listed from layer 1 to layer 5 as recorded; choose whicheve
 3. Expand the five layers into CSS custom properties, keeping the pattern name in comments, e.g. `--kasane-surface-1`.
 4. Check WCAG contrast for every text/background pair. If a pair fails, adjust lightness in OKLCH and keep hue and chroma as close to the original as possible. Tell the user what you adjusted.
 5. Judge the result in the composed layout, not as isolated swatches: a colour shifts against its neighbours (Albers), and proportion changes how a palette reads.
-6. For dark mode, compose a new theme; do not invert the light ramp. Build the surfaces from the pattern's darkest layer, or from a deep neutral tinted toward the pattern's main hue (if the darkest layer's chroma exceeds the dark-surface cap of C 0.045 in `application-rules.md`, it becomes a band on a deeper neutral of its hue instead of the page ground), and lower chroma on them (their share of the hue's ceiling should be modest, since saturated colour reads as neon on dark). Space the dark surface steps far enough apart to stay distinguishable, as they collapse together more easily than pale ones. Use a light, lightly tinted text colour. Choose the *hitoe* accent and any other accent again for each role, usually a step lighter and a little less vivid than in light mode, rather than reusing the light-mode value. Then re-measure every text/background and accent/background pair in the dark theme, because contrast does not carry over from the light theme.
-
-## Palettes
-
-### Celebratory and year-round
-
-Worn at festivals and ceremonies. Safe defaults when no season is requested.
-
-#### Kōbai no nioi 紅梅の匂 — Red-plum gradation
-
-- **Type:** nioi
-- **Hitoe (edge accent):** ao `#2A603B`
-- **Layers 1–5:** koki kōbai `#BF4054` → kōbai `#DB5A6B` → kōbai `#DB5A6B` → asaki kōbai `#F99BA2` → usuki kōbai `#FECBCD`
-- **Hex sequence:** `#2A603B` `#BF4054` `#DB5A6B` `#DB5A6B` `#F99BA2` `#FECBCD`
-
-#### Moegi no nioi 萌黄の匂 — Sprout-green gradation
-
-- **Type:** nioi
-- **Hitoe (edge accent):** kurenai `#C91F37`
-- **Layers 1–5:** koki moegi `#447112` → moegi `#5B8930` → moegi `#5B8930` → asaki moegi `#91B378` → usuki moegi `#B8CFA8`
-- **Hex sequence:** `#C91F37` `#447112` `#5B8930` `#5B8930` `#91B378` `#B8CFA8`
-
-#### Kurenai no nioi 紅の匂 — Scarlet gradation
-
-- **Type:** nioi
-- **Hitoe (edge accent):** kōbai `#DB5A6B`
-- **Layers 1–5:** usuki kurenai `#EFA4A1` → asaki kurenai `#E57475` → kurenai `#C91F37` → kurenai `#C91F37` → koki kurenai `#A60426`
-- **Hex sequence:** `#DB5A6B` `#EFA4A1` `#E57475` `#C91F37` `#C91F37` `#A60426`
-
-#### Kurenai no usuyō 紅の薄様 — Scarlet thinning to white
-
-- **Type:** usuyō
-- **Hitoe (edge accent):** shiro `#FFDDCA`
-- **Layers 1–5:** shiro `#FFDDCA` → shiro `#FFDDCA` → usuki kurenai `#EFA4A1` → asaki kurenai `#E57475` → kurenai `#C91F37`
-- **Hex sequence:** `#FFDDCA` `#FFDDCA` `#FFDDCA` `#EFA4A1` `#E57475` `#C91F37`
-
-#### Matsu-gasane 松重 — Layered pine
-
-- **Type:** kasane
-- **Hitoe (edge accent):** kurenai `#C91F37`
-- **Layers 1–5:** usuki moegi `#B8CFA8` → asaki moegi `#91B378` → moegi `#5B8930` → asaki suō `#9F5F67` → suō `#7E2639`
-- **Hex sequence:** `#C91F37` `#B8CFA8` `#91B378` `#5B8930` `#9F5F67` `#7E2639`
-
-#### Suō no nioi 蘇芳の匂 — Sappanwood gradation
-
-- **Type:** nioi
-- **Hitoe (edge accent):** ao `#2A603B`
-- **Layers 1–5:** koki suō `#640A25` → suō `#7E2639` → asaki suō `#9F5F67` → asaki suō `#9F5F67` → usuki suō `#B18589`
-- **Hex sequence:** `#2A603B` `#640A25` `#7E2639` `#9F5F67` `#9F5F67` `#B18589`
-
-### Winter to spring
-
-New Year through the early lunar months: plum, snow, kerria, purple.
-
-#### Murasaki no nioi 紫の匂 — Purple gradation
-
-- **Type:** nioi
-- **Hitoe (edge accent):** kurenai `#C91F37`
-- **Layers 1–5:** usuki murasaki `#8B7788` → asaki murasaki `#745670` → murasaki `#4F284B` → murasaki `#4F284B` → koki murasaki `#391336`
-- **Hex sequence:** `#C91F37` `#8B7788` `#745670` `#4F284B` `#4F284B` `#391336`
-
-#### Murasaki no usuyō 紫の薄様 — Purple thinning to white
-
-- **Type:** usuyō
-- **Hitoe (edge accent):** shiro `#FFDDCA`
-- **Layers 1–5:** shiro `#FFDDCA` → shiro `#FFDDCA` → usuki murasaki `#8B7788` → asaki murasaki `#745670` → murasaki `#4F284B`
-- **Hex sequence:** `#FFDDCA` `#FFDDCA` `#FFDDCA` `#8B7788` `#745670` `#4F284B`
-
-#### Ume-gasane 梅重 — Layered plum
-
-- **Type:** nioi
-- **Hitoe (edge accent):** koki murasaki `#391336`
-- **Layers 1–5:** koki suō `#640A25` → kurenai `#C91F37` → kōbai `#DB5A6B` → asaki kōbai `#F99BA2` → usuki kōbai `#FECBCD`
-- **Hex sequence:** `#391336` `#640A25` `#C91F37` `#DB5A6B` `#F99BA2` `#FECBCD`
-
-#### Yuki no shita 雪の下 — Plum beneath the snow
-
-- **Type:** kasane
-- **Hitoe (edge accent):** ao `#2A603B`
-- **Layers 1–5:** usuki kōbai `#FECBCD` → asaki kōbai `#F99BA2` → asaki kōbai `#F99BA2` → shiro `#FFDDCA` → shiro `#FFDDCA`
-- **Hex sequence:** `#2A603B` `#FECBCD` `#F99BA2` `#F99BA2` `#FFDDCA` `#FFDDCA`
-
-#### Yamabuki no nioi 山吹の匂 — Kerria gradation
-
-- **Type:** nioi
-- **Hitoe (edge accent):** ao `#2A603B`
-- **Layers 1–5:** ki `#F3C13A` → usuki kuchiba `#FEDBC5` → asaki kuchiba `#F5B186` → asaki kuchiba `#F5B186` → kuchiba `#D57835`
-- **Hex sequence:** `#2A603B` `#F3C13A` `#FEDBC5` `#F5B186` `#F5B186` `#D57835`
-
-#### Ura yamabuki 裏山吹 — Kerria lining
-
-- **Type:** monochrome
-- **Hitoe (edge accent):** ao `#2A603B`
-- **Layers 1–5:** ki `#F3C13A` → ki `#F3C13A` → ki `#F3C13A` → ki `#F3C13A` → ki `#F3C13A`
-- **Hex sequence:** `#2A603B` `#F3C13A` `#F3C13A` `#F3C13A` `#F3C13A` `#F3C13A`
-
-#### Hana yamabuki 花山吹 — Kerria blossom
-
-- **Type:** monochrome
-- **Hitoe (edge accent):** ao `#2A603B`
-- **Layers 1–5:** asaki kuchiba `#F5B186` → asaki kuchiba `#F5B186` → asaki kuchiba `#F5B186` → asaki kuchiba `#F5B186` → asaki kuchiba `#F5B186`
-- **Hex sequence:** `#2A603B` `#F5B186` `#F5B186` `#F5B186` `#F5B186` `#F5B186`
-
-#### Iroiro 色々 — Many colours
-
-- **Type:** kasane
-- **Hitoe (edge accent):** kurenai `#C91F37`
-- **Layers 1–5:** suō `#7E2639` → ki `#F3C13A` → kōbai `#DB5A6B` → murasaki `#4F284B` → usuiro `#A87CA0`
-- **Hex sequence:** `#C91F37` `#7E2639` `#F3C13A` `#DB5A6B` `#4F284B` `#A87CA0`
-
-#### Futatsu-iro — Two colours (six robes)
-
-- **Type:** kasane
-- **Hitoe (edge accent):** kurenai `#C91F37`
-- **Layers 1–6:** moegi `#5B8930` → moegi `#5B8930` → ki `#F3C13A` → ki `#F3C13A` → usuiro `#A87CA0` → usuiro `#A87CA0`
-- **Hex sequence:** `#C91F37` `#5B8930` `#5B8930` `#F3C13A` `#F3C13A` `#A87CA0` `#A87CA0`
-
-### Early summer
-
-Fourth lunar month onward: iris, wisteria, azalea, citrus blossom. Mostly white under-robes, so these suit light, airy pages.
-
-#### Shōbu 菖蒲 — Sweet flag
-
-- **Type:** kasane
-- **Hitoe (edge accent):** shiro `#FFDDCA`
-- **Layers 1–5:** asaki kōbai `#F99BA2` → kōbai `#DB5A6B` → shiro `#FFDDCA` → asaki ao `#64886C` → ao `#2A603B`
-- **Hex sequence:** `#FFDDCA` `#F99BA2` `#DB5A6B` `#FFDDCA` `#64886C` `#2A603B`
-
-#### Waka shōbu 若菖蒲 — Young sweet flag
-
-- **Type:** usuyō
-- **Hitoe (edge accent):** shiro `#FFDDCA`
-- **Layers 1–5:** shiro `#FFDDCA` → shiro `#FFDDCA` → asaki ao `#64886C` → asaki ao `#64886C` → ao `#2A603B`
-- **Hex sequence:** `#FFDDCA` `#FFDDCA` `#FFDDCA` `#64886C` `#64886C` `#2A603B`
-
-#### Fuji 藤 — Wisteria
-
-- **Type:** usuyō
-- **Hitoe (edge accent):** shiro `#FFDDCA`
-- **Layers 1–5:** shiro `#FFDDCA` → shiro `#FFDDCA` → usuki murasaki `#8B7788` → asaki murasaki `#745670` → asaki murasaki `#745670`
-- **Hex sequence:** `#FFDDCA` `#FFDDCA` `#FFDDCA` `#8B7788` `#745670` `#745670`
-
-#### Tsutsuji 躑躅 — Azalea
-
-- **Type:** kasane
-- **Hitoe (edge accent):** shiro `#FFDDCA`
-- **Layers 1–5:** asaki ao `#64886C` → ao `#2A603B` → usuki kurenai `#EFA4A1` → asaki kurenai `#E57475` → kurenai `#C91F37`
-- **Hex sequence:** `#FFDDCA` `#64886C` `#2A603B` `#EFA4A1` `#E57475` `#C91F37`
-
-#### Mochi tsutsuji 餅躑躅 — Rice-cake azalea
-
-- **Type:** kasane
-- **Hitoe (edge accent):** shiro `#FFDDCA`
-- **Layers 1–5:** asaki ao `#64886C` → ao `#2A603B` → asaki suō `#9F5F67` → asaki suō `#9F5F67` → suō `#7E2639`
-- **Hex sequence:** `#FFDDCA` `#64886C` `#2A603B` `#9F5F67` `#9F5F67` `#7E2639`
-
-#### Hana tachibana 花橘 — Mandarin blossom
-
-- **Type:** kasane
-- **Hitoe (edge accent):** shiro `#FFDDCA`
-- **Layers 1–5:** asaki ao `#64886C` → ao `#2A603B` → shiro `#FFDDCA` → usuki kuchiba `#FEDBC5` → asaki kuchiba `#F5B186`
-- **Hex sequence:** `#FFDDCA` `#64886C` `#2A603B` `#FFDDCA` `#FEDBC5` `#F5B186`
-
-#### Nadeshiko 撫子 — Wild pink (dianthus)
-
-- **Type:** usuyō
-- **Hitoe (edge accent):** shiro `#FFDDCA`
-- **Layers 1–5:** shiro `#FFDDCA` → shiro `#FFDDCA` → asaki suō `#9F5F67` → asaki suō `#9F5F67` → suō `#7E2639`
-- **Hex sequence:** `#FFDDCA` `#FFDDCA` `#FFDDCA` `#9F5F67` `#9F5F67` `#7E2639`
-
-#### Kakitsubata 杜若 — Rabbit-ear iris
-
-- **Type:** kasane
-- **Hitoe (edge accent):** kurenai `#C91F37`
-- **Layers 1–5:** asaki ao `#64886C` → ao `#2A603B` → usuiro `#A87CA0` → usuiro `#A87CA0` → asaki murasaki `#745670`
-- **Hex sequence:** `#C91F37` `#64886C` `#2A603B` `#A87CA0` `#A87CA0` `#745670`
-
-### Summer to early autumn
-
-Autumn wildflowers.
-
-#### Ominaeshi 女郎花 — Patrinia flower (four robes)
-
-- **Type:** monochrome
-- **Hitoe (edge accent):** kurenai `#C91F37`
-- **Layers 1–4:** ominaeshi `#D9B611` → ominaeshi `#D9B611` → ominaeshi `#D9B611` → ominaeshi `#D9B611`
-- **Hex sequence:** `#C91F37` `#D9B611` `#D9B611` `#D9B611` `#D9B611`
-
-#### Rindō 竜胆 — Gentian
-
-- **Type:** kasane
-- **Hitoe (edge accent):** shu `#FF3500`
-- **Layers 1–5:** ao `#2A603B` → ao `#2A603B` → asaki murasaki `#745670` → asaki murasaki `#745670` → murasaki `#4F284B`
-- **Uwagi (outer robe):** murasaki `#4F284B`
-- **Hex sequence:** `#FF3500` `#2A603B` `#2A603B` `#745670` `#745670` `#4F284B` `#4F284B`
-
-### Late autumn
-
-From the tenth lunar month: turning leaves and chrysanthemums.
-
-#### Ki-giku 黄菊 — Yellow chrysanthemum
-
-- **Type:** kasane
-- **Hitoe (edge accent):** ao `#2A603B`
-- **Layers 1–5:** asaki ki `#FFF1D1` → asaki ki `#FFF1D1` → asaki suō `#9F5F67` → asaki suō `#9F5F67` → suō `#7E2639`
-- **Hex sequence:** `#2A603B` `#FFF1D1` `#FFF1D1` `#9F5F67` `#9F5F67` `#7E2639`
-
-#### Kurenai momiji 紅紅葉 — Scarlet autumn maple
-
-- **Type:** kasane
-- **Hitoe (edge accent):** kurenai `#C91F37`
-- **Layers 1–5:** asaki ao `#64886C` → koki ao `#114A26` → ki `#F3C13A` → asaki kuchiba `#F5B186` → kurenai `#C91F37`
-- **Hex sequence:** `#C91F37` `#64886C` `#114A26` `#F3C13A` `#F5B186` `#C91F37`
-
-#### Haji momiji 櫨紅葉 — Wax-tree autumn foliage
-
-- **Type:** kasane
-- **Hitoe (edge accent):** kurenai `#C91F37`
-- **Layers 1–5:** suō `#7E2639` → kurenai `#C91F37` → asaki kuchiba `#F5B186` → usuki kuchiba `#FEDBC5` → ki `#F3C13A`
-- **Hex sequence:** `#C91F37` `#7E2639` `#C91F37` `#F5B186` `#FEDBC5` `#F3C13A`
-
-#### Ao momiji 青紅葉 — Green maple turning
-
-- **Type:** kasane
-- **Hitoe (edge accent):** suō `#7E2639`
-- **Layers 1–5:** kurenai `#C91F37` → asaki kuchiba `#F5B186` → ki `#F3C13A` → asaki ao `#64886C` → ao `#2A603B`
-- **Hex sequence:** `#7E2639` `#C91F37` `#F5B186` `#F3C13A` `#64886C` `#2A603B`
-
-#### Kaede momiji 楓紅葉 — Maple foliage
-
-- **Type:** kasane
-- **Hitoe (edge accent):** suō `#7E2639`
-- **Layers 1–5:** kurenai `#C91F37` → asaki kuchiba `#F5B186` → ki `#F3C13A` → asaki ao `#64886C` → asaki ao `#64886C`
-- **Hex sequence:** `#7E2639` `#C91F37` `#F5B186` `#F3C13A` `#64886C` `#64886C`
-
-#### Shiragiku 白菊 — White chrysanthemum
-
-- **Type:** monochrome
-- **Hitoe (edge accent):** kurenai `#C91F37`
-- **Layers 1–5:** shiro `#FFDDCA` → shiro `#FFDDCA` → shiro `#FFDDCA` → shiro `#FFDDCA` → shiro `#FFDDCA`
-- **Uwagi (outer robe):** ki `#F3C13A`
-- **Kouchiki (top coat):** suō `#7E2639`
-- **Hex sequence:** `#C91F37` `#FFDDCA` `#FFDDCA` `#FFDDCA` `#FFDDCA` `#FFDDCA` `#F3C13A` `#7E2639`
-
-#### Utsuroi-giku 移菊 — Fading chrysanthemum
-
-- **Type:** monochrome
-- **Hitoe (edge accent):** kurenai `#C91F37`
-- **Layers 1–5:** murasaki `#4F284B` → murasaki `#4F284B` → murasaki `#4F284B` → murasaki `#4F284B` → murasaki `#4F284B`
-- **Uwagi (outer robe):** ao `#2A603B`
-- **Kouchiki (top coat):** ao `#2A603B`
-- **Hex sequence:** `#C91F37` `#4F284B` `#4F284B` `#4F284B` `#4F284B` `#4F284B` `#2A603B` `#2A603B`
-
-#### Ki momiji 黄紅葉 — Yellow maple
-
-- **Type:** monochrome
-- **Hitoe (edge accent):** kurenai `#C91F37`
-- **Layers 1–5:** ki `#F3C13A` → ki `#F3C13A` → ki `#F3C13A` → ki `#F3C13A` → ki `#F3C13A`
-- **Uwagi (outer robe):** suō `#7E2639`
-- **Kouchiki (top coat):** ao `#2A603B`
-- **Hex sequence:** `#C91F37` `#F3C13A` `#F3C13A` `#F3C13A` `#F3C13A` `#F3C13A` `#7E2639` `#2A603B`
-
-Note: *Susuki* (pampas grass) is recorded with the same recipe as *Mochi tsutsuji*, distinguished by the season it was worn.
-
-## Example: Ume-gasane as CSS
-
-```css
-:root {
-  /* Ume-gasane 梅重, layered plum — winter to spring */
-  --kasane-bg:        #FECBCD; /* usuki kōbai */
-  --kasane-surface:   #F99BA2; /* asaki kōbai */
-  --kasane-raised:    #DB5A6B; /* kōbai */
-  --kasane-strong:    #C91F37; /* kurenai */
-  --kasane-ink:       #640A25; /* koki suō */
-  --kasane-accent:    #391336; /* hitoe: koki murasaki */
-}
-```
-
-Text on `--kasane-bg` should use `--kasane-ink` or `--kasane-accent`; check contrast before shipping. This example is a Persuade-style drenched page: usuki kōbai has chroma ≈ 0.058, above the C ≤ 0.04 limit for long-reading surfaces (albers-principles §4). For an app or reading surface, make `--kasane-bg` a neutral-50 tinted from kōbai's hue and use `#FECBCD` for a band or hero.
+6. For dark mode, compose a new theme, never the light ramp inverted (`application-rules.md` §6): surfaces from the pattern's darkest layer or from a deep neutral tinted toward its hue (a layer above the dark-surface cap of C 0.045 becomes a band on a deeper neutral of its hue, not the page), lower chroma, wider dark steps, a light lightly tinted text colour; re-pick the *hitoe* and any other accent per role (usually a step lighter and a little less vivid) and re-measure every pair, because contrast does not carry over.
+
+## Pattern index
+
+All 33 patterns, in the order the sources group them. Hex values are not repeated here: `search.py --id <id>` prints them (the base-colour table above
+holds the twelve bases); `build_tokens.py --palette <id>` maps hitoe and layers to roles as "Garment layers" above says. Season labels are
+approximate Western equivalents of the old lunar calendar. *Susuki* (pampas grass) shares *Mochi tsutsuji*'s recipe and is not
+listed separately. Layer order is as recorded (1 → 5); the palest end usually becomes the page.
+
+| id | Pattern | Season group | Type | Hitoe (edge accent) | Layers 1-5 (then uwagi / kouchiki when recorded); hex via `search.py --id` |
+|---|---|---|---|---|---|
+| `kasane-kobai-no-nioi` | Kōbai no nioi 紅梅の匂 — Red-plum gradation | Celebratory and year-round | nioi | ao | koki kōbai → kōbai → kōbai → asaki kōbai → usuki kōbai |
+| `kasane-moegi-no-nioi` | Moegi no nioi 萌黄の匂 — Sprout-green gradation | Celebratory and year-round | nioi | kurenai | koki moegi → moegi → moegi → asaki moegi → usuki moegi |
+| `kasane-kurenai-no-nioi` | Kurenai no nioi 紅の匂 — Scarlet gradation | Celebratory and year-round | nioi | kōbai | usuki kurenai → asaki kurenai → kurenai → kurenai → koki kurenai |
+| `kasane-kurenai-no-usuyo` | Kurenai no usuyō 紅の薄様 — Scarlet thinning to white | Celebratory and year-round | usuyō | shiro | shiro → shiro → usuki kurenai → asaki kurenai → kurenai |
+| `kasane-matsu-gasane` | Matsu-gasane 松重 — Layered pine | Celebratory and year-round | kasane | kurenai | usuki moegi → asaki moegi → moegi → asaki suō → suō |
+| `kasane-suo-no-nioi` | Suō no nioi 蘇芳の匂 — Sappanwood gradation | Celebratory and year-round | nioi | ao | koki suō → suō → asaki suō → asaki suō → usuki suō |
+| `kasane-murasaki-no-nioi` | Murasaki no nioi 紫の匂 — Purple gradation | Winter to spring | nioi | kurenai | usuki murasaki → asaki murasaki → murasaki → murasaki → koki murasaki |
+| `kasane-murasaki-no-usuyo` | Murasaki no usuyō 紫の薄様 — Purple thinning to white | Winter to spring | usuyō | shiro | shiro → shiro → usuki murasaki → asaki murasaki → murasaki |
+| `kasane-ume-gasane` | Ume-gasane 梅重 — Layered plum | Winter to spring | nioi | koki murasaki | koki suō → kurenai → kōbai → asaki kōbai → usuki kōbai |
+| `kasane-yuki-no-shita` | Yuki no shita 雪の下 — Plum beneath the snow | Winter to spring | kasane | ao | usuki kōbai → asaki kōbai → asaki kōbai → shiro → shiro |
+| `kasane-yamabuki-no-nioi` | Yamabuki no nioi 山吹の匂 — Kerria gradation | Winter to spring | nioi | ao | ki → usuki kuchiba → asaki kuchiba → asaki kuchiba → kuchiba |
+| `kasane-ura-yamabuki` | Ura yamabuki 裏山吹 — Kerria lining | Winter to spring | monochrome | ao | ki → ki → ki → ki → ki |
+| `kasane-hana-yamabuki` | Hana yamabuki 花山吹 — Kerria blossom | Winter to spring | monochrome | ao | asaki kuchiba → asaki kuchiba → asaki kuchiba → asaki kuchiba → asaki kuchiba |
+| `kasane-iroiro` | Iroiro 色々 — Many colours | Winter to spring | kasane | kurenai | suō → ki → kōbai → murasaki → usuiro |
+| `kasane-futatsu-iro` | Futatsu-iro — Two colours (six robes) | Winter to spring | kasane | kurenai | moegi → moegi → ki → ki → usuiro → usuiro |
+| `kasane-shobu` | Shōbu 菖蒲 — Sweet flag | Early summer | kasane | shiro | asaki kōbai → kōbai → shiro → asaki ao → ao |
+| `kasane-waka-shobu` | Waka shōbu 若菖蒲 — Young sweet flag | Early summer | usuyō | shiro | shiro → shiro → asaki ao → asaki ao → ao |
+| `kasane-fuji` | Fuji 藤 — Wisteria | Early summer | usuyō | shiro | shiro → shiro → usuki murasaki → asaki murasaki → asaki murasaki |
+| `kasane-tsutsuji` | Tsutsuji 躑躅 — Azalea | Early summer | kasane | shiro | asaki ao → ao → usuki kurenai → asaki kurenai → kurenai |
+| `kasane-mochi-tsutsuji` | Mochi tsutsuji 餅躑躅 — Rice-cake azalea | Early summer | kasane | shiro | asaki ao → ao → asaki suō → asaki suō → suō |
+| `kasane-hana-tachibana` | Hana tachibana 花橘 — Mandarin blossom | Early summer | kasane | shiro | asaki ao → ao → shiro → usuki kuchiba → asaki kuchiba |
+| `kasane-nadeshiko` | Nadeshiko 撫子 — Wild pink (dianthus) | Early summer | usuyō | shiro | shiro → shiro → asaki suō → asaki suō → suō |
+| `kasane-kakitsubata` | Kakitsubata 杜若 — Rabbit-ear iris | Early summer | kasane | kurenai | asaki ao → ao → usuiro → usuiro → asaki murasaki |
+| `kasane-ominaeshi` | Ominaeshi 女郎花 — Patrinia flower (four robes) | Summer to early autumn | monochrome | kurenai | ominaeshi → ominaeshi → ominaeshi → ominaeshi |
+| `kasane-rindo` | Rindō 竜胆 — Gentian | Summer to early autumn | kasane | shu | ao → ao → asaki murasaki → asaki murasaki → murasaki; uwagi murasaki |
+| `kasane-ki-giku` | Ki-giku 黄菊 — Yellow chrysanthemum | Late autumn | kasane | ao | asaki ki → asaki ki → asaki suō → asaki suō → suō |
+| `kasane-kurenai-momiji` | Kurenai momiji 紅紅葉 — Scarlet autumn maple | Late autumn | kasane | kurenai | asaki ao → koki ao → ki → asaki kuchiba → kurenai |
+| `kasane-haji-momiji` | Haji momiji 櫨紅葉 — Wax-tree autumn foliage | Late autumn | kasane | kurenai | suō → kurenai → asaki kuchiba → usuki kuchiba → ki |
+| `kasane-ao-momiji` | Ao momiji 青紅葉 — Green maple turning | Late autumn | kasane | suō | kurenai → asaki kuchiba → ki → asaki ao → ao |
+| `kasane-kaede-momiji` | Kaede momiji 楓紅葉 — Maple foliage | Late autumn | kasane | suō | kurenai → asaki kuchiba → ki → asaki ao → asaki ao |
+| `kasane-shiragiku` | Shiragiku 白菊 — White chrysanthemum | Late autumn | monochrome | kurenai | shiro → shiro → shiro → shiro → shiro; uwagi ki; kouchiki suō |
+| `kasane-utsuroi-giku` | Utsuroi-giku 移菊 — Fading chrysanthemum | Late autumn | monochrome | kurenai | murasaki → murasaki → murasaki → murasaki → murasaki; uwagi ao; kouchiki ao |
+| `kasane-ki-momiji` | Ki momiji 黄紅葉 — Yellow maple | Late autumn | monochrome | kurenai | ki → ki → ki → ki → ki; uwagi suō; kouchiki ao |
 
 ## Sources and attribution
 

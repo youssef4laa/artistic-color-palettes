@@ -209,7 +209,10 @@ def main(argv=None) -> int:
             vd.validate_tokens(t, do_fix=True)
             cands.append(t)
     except SystemExit as exc:
-        print(f"error: {exc}", file=sys.stderr)
+        msg = str(exc)
+        while msg.lower().startswith("error: "):
+            msg = msg[7:]
+        print(f"error: {msg}", file=sys.stderr)
         return 2
     out = args.out.resolve()
     out.parent.mkdir(parents=True, exist_ok=True)

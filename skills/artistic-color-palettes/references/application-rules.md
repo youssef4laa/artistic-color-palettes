@@ -26,19 +26,18 @@ tables: the dark one is not the light one mirrored (Albers 7, 10).
   vivid only when they use the same *share*; yellow and cyan top out far lower than red or blue):
   - `Cmax(L, h)` = the largest chroma inside sRGB at that L and h (binary search, tolerance 1e-4).
   - Seed share `s = C_seed / Cmax(L_seed, h)`.
-  - Step chroma `C_step = s × profile[step] × Cmax(L_step, h)`, with profile (light)
-    50 0.15 · 100 0.25 · 200 0.40 · 300 0.60 · 400 0.80 · 500 0.95 · 600 1.00 · 700 0.92 ·
-    800 0.80 · 900 0.65 · 950 0.50. Chroma therefore peaks mid-ramp and both ends are nearly neutral.
+  - Step chroma `C_step = s × profile[step] × Cmax(L_step, h)`; the light profile rises from 0.15 at step 50
+    to 1.00 at 600 and falls to 0.50 at 950 (exact values: the constants at the top of `scripts/build_tokens.py`),
+    so chroma peaks mid-ramp and both ends are nearly neutral.
   - Surfaces that carry body text stay at C ≤ 0.04 in light mode (Albers 4); this is why the
     neutral ramp is capped at 0.03 and a vivid palette colour becomes a band, not the reading ground.
     The exception is a Drenched surface, where the colour *is* the ground by choice: short copy
     only, measured, and long reading moves to a calmer panel.
   - Dark ramp: same profile × 0.85; steps 950/900/800 (dark surfaces) are also capped at C ≤ 0.045,
     so saturated colour never sits behind text as a page ground in dark mode.
-  - Neutral ramp: h = the hue of the palette colour chosen to tint it, `C = tint × n[step]` with
-    n = 50 0.006 · 100 0.010 · 200 0.014 · 300 0.018 · 400 0.020 · 500 0.020 · 600 0.020 ·
-    700 0.018 · 800 0.016 · 900 0.014 · 950 0.012, `tint` default 1.0, hard cap C ≤ 0.03. One
-    temperature, held across the whole ramp (Albers 11). Pure grey only on request.
+  - Neutral ramp: h = the hue of the palette colour chosen to tint it, C from a small per-step profile
+    (0.006 at the ends to 0.020 mid-ramp; constants in `build_tokens.py`) times `tint` (default 1.0), hard
+    cap C ≤ 0.03. One temperature, held across the whole ramp (Albers 11). Pure grey only on request.
 - **Pinned seed.** The plate, pattern or painting colour is kept exactly, exported as
   `--<name>-seed`, and placed at the step whose table L is nearest its own L; that step holds the
   seed value unchanged and the other steps are generated around it (so one interval may be
@@ -183,7 +182,7 @@ reported separately from the contrast result because WCAG does not see them:
 
 ## 6. Composed dark mode (never inverted)
 
-Dark mode is a new ground, so it is recomposed (wada-method §4.3; kasane-no-irome "How to apply"
+Dark mode is a new ground, so it is recomposed (wada-method §3; kasane-no-irome "How to apply"
 step 6; Albers 7). The light ramp reversed is a defect, not a starting point.
 
 1. Build the dark ramps from the same seeds with the dark table (§1): lower chroma (× 0.85), dark
@@ -235,7 +234,7 @@ glass only, with at most one translucent layer under any text (Albers 5). The va
 each translucent token over every surface in its sits-on list (gamma-encoded sRGB, as browsers
 do), measures the result, and reports the worst case; text over two or more translucent layers is
 flagged. Elevation prefers opaque surfaces stepped by ΔL 0.02–0.05 (within the §5 scoping) over
-alpha. A tint mixed toward white and a tint made by alpha are different colours (wada-method §4.2):
+alpha. A tint mixed toward white and a tint made by alpha are different colours (wada-method §3):
 tokens use the solid mixed value.
 
 ## 10. Cultural meaning
@@ -251,10 +250,3 @@ remapped per market, never hard-wired to a hue:
   symbols (see the anti-cliché list in `style-recipes.md`).
 - Status conventions (red danger, amber warning, green success) are respected by default but the
   report names them so a locale can override them.
-
-## 11. What the report always contains
-
-The ramp table with L, C, h per step; the role table with the step and the sits-on list per role;
-every measured pair (WCAG ratio and APCA Lc, both modes); vibrating and vanishing flags; the
-mid-lightness and CVD checks; every adjustment with before/after; the provenance line and the
-proportion targets from `style-recipes.md`; and the hand-off paths from `interop.md`.

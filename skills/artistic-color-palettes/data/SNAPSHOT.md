@@ -71,6 +71,6 @@ see each painting's page for the work's licence status and sources.
 |---|---|---|
 | palettes.csv | 436 | wada_plate 348, editorial 30, painting 25, kasane 33 |
 | colors.csv | 210 | 159 carry a printed Wada index entry (CMYK, kanji) |
-| paintings.json | 25 | 3 ground + 3 accent each; 6 flagged for colour drift |
+| data-raw/paintings.json (not shipped) | 25 | 3 ground + 3 accent each; 6 flagged for colour drift |
 
 <!-- build_data:end -->

@@ -6,16 +6,11 @@ each neighbour sees the palette. Everything here is colour only.
 
 ## 1. Boundaries
 
-**Owns:** palette selection (from its own data), ramps, two-tier tokens, colour proportion,
-contrast measurement and adjustment, composed dark mode, colour-vision-deficiency checks, the
-colour region of DESIGN.md and the companion files.
-
-**Does not own, and defers by name:** typography (Impeccable `typeset`, Taste's type roles,
-UI/UX Pro Max font pairings, Theme Factory's Typography section); layout, spacing and density
-(Impeccable `layout`, Design Principles composition, interface-design); motion (Impeccable
-`animate`); component craft and states (Impeccable `polish`, interface-design, UI/UX Pro Max
-component specs); UX copy (Impeccable `clarify`). When a neighbour owns one of these and the user
-asks us, we answer with the token to use and point at the neighbour for the rest.
+Colour only, as SKILL.md states: palette selection, ramps, two-tier tokens, proportion, contrast,
+composed dark mode, CVD checks, the colour region of DESIGN.md and its companions. Typography, layout,
+spacing, motion, component craft and copy are a neighbour's; when asked, give the token to use and defer
+by name (Impeccable `typeset` / `layout` / `animate` / `polish` / `clarify`, Taste's type roles, UI/UX Pro Max
+font pairings, interface-design, Design Principles composition).
 
 ## 2. Shared vocabulary
 
@@ -168,13 +163,3 @@ a Taste `direction.json`, a Theme Factory theme). If so, the skill offers two th
 or **refine** it (keep its hues, rebuild ramps, measure, fix contrast, compose dark mode). It never
 generates a second palette silently, never leaves two competing token sets in the project, and
 when it refines, the provenance line says "refined from <neighbour>'s palette".
-
-## 7. The hand-off template
-
-`assets/palette-handoff.template.md` is the fill-in form `scripts/handoff.py` renders into the
-DESIGN.md region and the chat summary. Its sections, in order: Palette character; Provenance and
-licence; Mode and strategy (Impeccable names); Roles (Primary / Secondary / Tertiary / Neutral);
-Named Rules; Light tokens; Dark tokens; Measured contrast (WCAG 2 + APCA per pair, both modes);
-Adjustments (before / after / reason); Flags (mid-lightness, vibrating, vanishing, CVD,
-colour-only meaning); Proportion targets; Switching mechanism; Do not change without
-re-validating; File pointers; Neighbour map; Pointer status (`handoff.claude_md`).

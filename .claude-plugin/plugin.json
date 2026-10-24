@@ -1,6 +1,6 @@
 {
   "name": "artistic-color-palettes",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Chooses real artistic colour palettes (Wada plates, Heian kasane, public-domain paintings) and turns them into OKLCH ramps, design tokens, measured contrast and a composed dark mode.",
   "author": { "name": "youssef4laa" },
   "homepage": "https://github.com/youssef4laa/artistic-color-palettes",

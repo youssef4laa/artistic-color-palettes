@@ -132,7 +132,7 @@ class TestColorsAndPaintingsJson(unittest.TestCase):
         self.assertEqual(black["best_text"], "#ffffff")
 
     def test_paintings_json(self):
-        data = json.loads((DATA / "paintings.json").read_text(encoding="utf-8"))
+        data = json.loads((REPO / "data-raw" / "paintings.json").read_text(encoding="utf-8"))
         self.assertEqual(len(data), 25)
         self.assertEqual(sum(1 for d in data if d["drift"]), 6)
         for d in data:
@@ -158,10 +158,12 @@ class TestBuildDataReproducible(unittest.TestCase):
         from pathlib import Path
 
         with tempfile.TemporaryDirectory(prefix="acp build data ") as tmp:
-            proc = run_script("build_data.py", "--raw", str(REPO / "data-raw"), "--out", tmp)
+            proc = run_script("build_data.py", "--raw", str(REPO / "data-raw"), "--out", tmp,
+                              "--paintings-out", str(Path(tmp) / "paintings.json"))
             self.assertEqual(proc.returncode, 0, proc.stderr_text)
-            for name in ("palettes.csv", "colors.csv", "paintings.json"):
+            for name in ("palettes.csv", "colors.csv"):
                 self.assertEqual((Path(tmp) / name).read_bytes(), (DATA / name).read_bytes(), name)
+            self.assertEqual((Path(tmp) / "paintings.json").read_bytes(), (REPO / "data-raw" / "paintings.json").read_bytes())
 
 
 if __name__ == "__main__":

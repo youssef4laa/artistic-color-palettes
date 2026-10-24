@@ -775,6 +775,14 @@ def load_or_build(args) -> dict:
                            on_accent=args.on_accent, action_style=args.action_style, text_min=args.text_min)
 
 
+def err_line(exc) -> str:
+    """'error: <message>' without doubling a prefix the message already carries."""
+    msg = str(exc)
+    while msg.lower().startswith("error: "):
+        msg = msg[7:]
+    return f"error: {msg}"
+
+
 def main(argv=None) -> int:
     cl.configure_stdio()
     ap = argparse.ArgumentParser(
@@ -817,14 +825,15 @@ def main(argv=None) -> int:
     ap.add_argument("--no-notes", action="store_true", help="drop remembered usage notes")
     ap.add_argument("--key-prefix", default="", help="prefix for our frontmatter colour keys (use if the existing colors: map clashes)")
     ap.add_argument("--yes", action="store_true", help="allow inserting our markers into an existing DESIGN.md that has none")
-    ap.add_argument("--dry-run", action="store_true", help="show what would change (diff for DESIGN.md) and write nothing")
+    ap.add_argument("--dry-run", action="store_true", help="write nothing; print a summary for a new DESIGN.md, or the diff when an existing one would change")
+    ap.add_argument("--diff", action="store_true", help="with --dry-run: print the full proposed DESIGN.md as a diff even when the file is new")
     ap.add_argument("--allow-failing", action="store_true", help="hand off even if the WCAG gate fails (not recommended)")
     args = ap.parse_args(argv)
     if sum(bool(x) for x in (args.tokens, args.palette, args.hex)) != 1:
         ap.error("give exactly one of --tokens, --palette or --hex")
     guard = protected_dir_problem(args.project_dir)
     if guard:
-        print(f"error: {guard} Nothing was written.", file=sys.stderr)
+        print(err_line(f"{guard} Nothing was written."), file=sys.stderr)
         return 4
     if args.claude_md == "yes" and not args.user_confirmed:
         print("error: --claude-md yes writes into the project's CLAUDE.md and AGENTS.md, so it needs the user's explicit yes in this conversation; "
@@ -836,7 +845,7 @@ def main(argv=None) -> int:
     try:
         tokens = load_or_build(args)
     except SystemExit as exc:
-        print(f"error: {exc}", file=sys.stderr)
+        print(err_line(exc), file=sys.stderr)
         return 2
     if tokens["palette"].get("source_type") == "custom":
         try:
@@ -882,7 +891,7 @@ def main(argv=None) -> int:
         else:
             old, new_text, how = "", seed_design_md(entries, region, tokens["name"], description), "created"
     except HandoffError as exc:
-        print(f"error: {exc}", file=sys.stderr)
+        print(err_line(exc), file=sys.stderr)
         return 2
 
     # CLAUDE.md state to record
@@ -904,10 +913,18 @@ def main(argv=None) -> int:
     results: list[str] = []
     code = 0
     if args.dry_run:
-        diff = list(difflib.unified_diff(old.split("\n"), new_text.split("\n"), "DESIGN.md (current)", "DESIGN.md (proposed)", lineterm=""))
-        print(f"DESIGN.md: {how}" + ("" if diff else " (no changes)"))
-        if diff:
-            print("\n".join(diff))
+        if how == "created" and not args.diff:
+            print(f"DESIGN.md: would be created ({new_text.count(chr(10)) + 1} lines; add --diff to see the text)")
+            print(f"  provenance: {tokens['palette']['label']}")
+            print(f"  strategy / mode: {tokens['strategy']['name']}, {tokens['strategy']['mode']} | gate "
+                  f"{'pass' if tokens['contrast']['gate_pass'] else 'FAIL'}")
+            print("  regions: frontmatter colours between '# acp:begin tokens' / '# acp:end tokens'; "
+                  "'## Colors' body between '<!-- acp:begin colors v1 -->' / '<!-- acp:end colors -->'")
+        else:
+            diff = list(difflib.unified_diff(old.split("\n"), new_text.split("\n"), "DESIGN.md (current)", "DESIGN.md (proposed)", lineterm=""))
+            print(f"DESIGN.md: {how}" + ("" if diff else " (no changes)"))
+            if diff:
+                print("\n".join(diff))
         print(f"{paths['palette_json']} and {paths['tokens_css']}: would be (re)written; nothing written (--dry-run)")
         return 0
 
@@ -945,7 +962,7 @@ def main(argv=None) -> int:
             try:
                 results.append(f"{fname}: {update_pointer_file(proj / fname, args.claude_md == 'yes')}")
             except HandoffError as exc:
-                print(f"error: {exc}", file=sys.stderr)
+                print(err_line(exc), file=sys.stderr)
                 return 2
     elif args.claude_md == "declined":
         results.append("CLAUDE.md / AGENTS.md: untouched (recorded handoff.claude_md = declined)")

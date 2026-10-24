@@ -510,7 +510,8 @@ def render_row(row: dict, score: float | None = None, near: list[dict] | None = 
     return out
 
 
-def format_text(i: int, r: dict) -> str:
+def format_text(i: int, r: dict, full: bool = False) -> str:
+    """Default listing is compact; --full adds the source URL, licence and score lines."""
     lines = []
     others = [h for h in r["hues"] if h != r["hue"]]
     meta = [f"{r['count']} colours", r["hue"] + (f" (also {', '.join(others)})" if others else ""),
@@ -539,9 +540,10 @@ def format_text(i: int, r: dict) -> str:
     lines.append(f"   label: {r['label']}")
     if r.get("drift_note"):
         lines.append(f"   drift: {r['drift_note']}")
-    lines.append(f"   source: {r['source_url']}   licence: {r['licence']}")
-    if "score" in r:
-        lines.append(f"   score: {r['score']}")
+    if full:
+        lines.append(f"   source: {r['source_url']}   licence: {r['licence']}")
+        if "score" in r:
+            lines.append(f"   score: {r['score']}")
     return "\n".join(lines)
 
 
@@ -549,14 +551,14 @@ def emit(args, payload: dict, rows_out: list[dict], code: int) -> int:
     if args.json:
         payload["results"] = rows_out
         payload["exit_code"] = code
-        print(json.dumps(payload, indent=2, ensure_ascii=False))
+        print(json.dumps(payload, ensure_ascii=False))  # compact: every field kept, no indentation
         return code
     if payload.get("message"):
         print(payload["message"], file=sys.stderr if code == 2 else sys.stdout)
     for n in payload.get("notes", []):
         print(f"note: {n}")
     for i, r in enumerate(rows_out, 1):
-        print(format_text(i, r))
+        print(format_text(i, r, full=getattr(args, "full", False)))
         print()
     return code
 
@@ -826,7 +828,9 @@ def main(argv=None) -> int:
     ap.add_argument("--source-type", dest="source_type", choices=SOURCE_TYPES, help="restrict to one family")
     ap.add_argument("--season", help="kasane season words, e.g. 'summer', 'late autumn'")
     ap.add_argument("--limit", type=int, default=5, help="maximum results (default 5)")
-    ap.add_argument("--json", action="store_true", help="JSON output")
+    ap.add_argument("--full", action="store_true", help="also print the source URL, licence and score per result (the default "
+                                                       "listing omits them; handoff.py writes credits from the data)")
+    ap.add_argument("--json", action="store_true", help="compact JSON output (all fields, including source_url and licence)")
     ap.add_argument("--data-dir", type=Path, default=cl.data_dir(), help="folder holding palettes.csv (default: <skill>/data)")
     args = ap.parse_intermixed_args(argv)
     if not args.query and not args.id and not any([args.count, args.mood, args.hue, args.lightness, args.chroma, args.near,

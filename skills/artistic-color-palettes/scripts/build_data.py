@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 """build_data.py - build-time script: raw colorcombinations.org snapshot + kasane reference ->
-the three data files the skill ships (data/palettes.csv, data/colors.csv, data/paintings.json).
+the two data files the skill ships (data/palettes.csv, data/colors.csv) plus the maintainers' painting records
+(data-raw/paintings.json, not shipped: nothing at run time reads it).
 
 Inputs (default: <repo>/data-raw, overridable with --raw):
   palettes.csv, colors.csv, wada-index.csv, paintings/*.json
-  references/kasane-no-irome.md (33 layered patterns, parsed from the markdown)
+  kasane-no-irome.md (33 layered patterns, parsed from the markdown; the shipped
+  references/kasane-no-irome.md is the short form with an index table and carries no 'Hex sequence' lines)
 
 Outputs (default: <skill>/data):
   palettes.csv   one table: Wada plates (348), editorial (30), paintings (25), kasane (33)
   colors.csv     the 210 site colours merged with the 159 printed Wada index rows (by name)
-  paintings.json the 25 normalised painting records
+  (data-raw/paintings.json: the 25 normalised painting records, written beside the raw inputs)
   SNAPSHOT.md    gets a "Built data" block with the row counts (updated in place)
 
 Derived columns, documented here so nobody has to guess:
@@ -17,7 +19,7 @@ Derived columns, documented here so nobody has to guess:
                 arc of the hue circle no wider than TONE_SPREAD_DEG (70 degrees), else 'different'.
                 The arc is 360 minus the largest gap between neighbouring hues. Fewer than two
                 chromatic colours -> 'same'. This follows Wada's same-tone / different-tone idea
-                (references/wada-method.md 3.4); the threshold is the skill's own choice.
+                (references/wada-method.md 2.2); the threshold is the skill's own choice.
   hue           every row: the dominant hue bucket measured from the hex values (red orange yellow
                 green teal blue purple pink brown neutral; colorlib.hue_bucket), i.e. the bucket with
                 the largest area-weighted OKLCH chroma above 0.04 (colorlib.palette_profile). The
@@ -472,7 +474,7 @@ def update_snapshot(path: Path, counts: dict[str, int]) -> None:
         f"| palettes.csv | {counts['palettes']} | wada_plate {counts['wada_plate']}, editorial {counts['editorial']}, "
         f"painting {counts['painting']}, kasane {counts['kasane']} |",
         f"| colors.csv | {counts['colors']} | {counts['colors_with_wada_index']} carry a printed Wada index entry (CMYK, kanji) |",
-        f"| paintings.json | {counts['paintings']} | 3 ground + 3 accent each; {counts['drift']} flagged for colour drift |",
+        f"| data-raw/paintings.json (not shipped) | {counts['paintings']} | 3 ground + 3 accent each; {counts['drift']} flagged for colour drift |",
         "", SNAP_END]
     text = path.read_text(encoding="utf-8") if path.exists() else "# Snapshot of colorcombinations.org data\n"
     text = text.replace("\r\n", "\n")
@@ -493,12 +495,15 @@ def main(argv=None) -> int:
     root = cl.skill_root()
     ap = argparse.ArgumentParser(
         prog="build_data.py",
-        description="Build data/palettes.csv, data/colors.csv, data/paintings.json from the raw snapshot "
-                    "(build-time script; the skill ships the outputs).",
+        description="Build data/palettes.csv and data/colors.csv (shipped) and data-raw/paintings.json (maintainers) "
+                    "from the raw snapshot (build-time script).",
     )
     ap.add_argument("--raw", type=Path, default=root.parent.parent / "data-raw", help="raw snapshot folder (default: <repo>/data-raw)")
     ap.add_argument("--out", type=Path, default=root / "data", help="output folder (default: <skill>/data)")
-    ap.add_argument("--kasane", type=Path, default=root / "references" / "kasane-no-irome.md", help="kasane reference markdown")
+    ap.add_argument("--kasane", type=Path, default=root.parent.parent / "data-raw" / "kasane-no-irome.md",
+                    help="full kasane pattern markdown with 'Hex sequence' lines (default: <repo>/data-raw/kasane-no-irome.md)")
+    ap.add_argument("--paintings-out", dest="paintings_out", type=Path,
+                    help="where to write paintings.json (default: <raw>/paintings.json; it is not part of the shipped data)")
     args = ap.parse_args(argv)
 
     raw, out = args.raw, args.out
@@ -512,7 +517,8 @@ def main(argv=None) -> int:
     write_csv(out / "palettes.csv", PALETTE_COLUMNS, rows)
     colours = build_colors(raw)
     write_csv(out / "colors.csv", COLOR_COLUMNS, colours)
-    (out / "paintings.json").write_text(json.dumps(records, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+    pj = args.paintings_out or (raw / "paintings.json")
+    pj.write_text(json.dumps(records, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
 
     counts = {
         "palettes": len(rows),

@@ -76,7 +76,8 @@ class TestSearch(unittest.TestCase):
         self.assertEqual(p.returncode, 0)
         self.assertIn("paint-sunflowers", p.stdout_text)
         self.assertIn("label: Sampled from Sunflowers, Vincent van Gogh, 1888 by colorcombinations.org", p.stdout_text)
-        self.assertIn("https://colorcombinations.org/paintings/sunflowers/", p.stdout_text)
+        self.assertNotIn("https://colorcombinations.org/paintings/sunflowers/", p.stdout_text)  # URL only with --full
+        self.assertIn("https://colorcombinations.org/paintings/sunflowers/", search("sunflowers", "--full").stdout_text)
         self.assertIn("drift:", p.stdout_text)
         self.assertIn("not the artist's original colours", p.stdout_text)
         k = search("wisteria")
