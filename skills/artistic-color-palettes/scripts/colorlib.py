@@ -13,8 +13,8 @@ Written from the published formulas, not copied from any library:
     severity 1.0, applied to linear RGB)
   * alpha compositing in gamma-encoded sRGB (what a browser does)
 
-Run `python scripts/colorlib.py --self-test` to check the test vectors from
-notes/2-shared-constants.md (sources branch).  Run `python scripts/colorlib.py --help` for the CLI.
+Run `python3 scripts/colorlib.py --self-test` to check the test vectors from
+notes/2-shared-constants.md (sources branch).  Run `python3 scripts/colorlib.py --help` for the CLI.
 """
 from __future__ import annotations
 

@@ -10,8 +10,8 @@ follow the strategy's proportion targets (the skill's own convention, not Wada's
 No network, no external fonts, no scripts: just HTML and CSS. The script writes the file and prints its path.
 
 Examples:
-  python scripts/preview.py --palette wada-229 --palette wada-100 --palette paint-the-great-wave-off-kanagawa
-  python scripts/preview.py --palette ed-kurenai-kon --palette kasane-fuji --hex "#9a2a2a,#1b2a4e,#f4eee0" --strategy committed --out out/preview.html
+  python3 scripts/preview.py --palette wada-229 --palette wada-100 --palette paint-the-great-wave-off-kanagawa
+  python3 scripts/preview.py --palette ed-kurenai-kon --palette kasane-fuji --hex "#9a2a2a,#1b2a4e,#f4eee0" --strategy committed --out out/preview.html
 """
 from __future__ import annotations
 

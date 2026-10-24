@@ -25,9 +25,9 @@ passes, gets an adjusted copy while the pinned value stays in its ramp.
 Exit code: 0 no gate failure (after fixing when --fix) | 1 at least one gate failure | 2 bad input.
 
 Examples:
-  python scripts/validate.py tokens.json
-  python scripts/validate.py tokens.json --fix --out tokens.fixed.json
-  python scripts/build_tokens.py --palette wada-229 | python scripts/validate.py - --fix --json
+  python3 scripts/validate.py tokens.json
+  python3 scripts/validate.py tokens.json --fix --out tokens.fixed.json
+  python3 scripts/build_tokens.py --palette wada-229 | python3 scripts/validate.py - --fix --json
 """
 from __future__ import annotations
 

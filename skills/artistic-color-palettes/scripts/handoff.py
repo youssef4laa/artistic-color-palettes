@@ -20,9 +20,9 @@ Re-running with the same input is byte-identical. Exit codes: 0 done | 1 contras
 2 bad input or broken markers | 3 DESIGN.md insertion needs --yes | 4 --claude-md yes without --user-confirmed.
 
 Examples:
-  python scripts/handoff.py --palette wada-229 --strategy restrained --project-dir ./myapp
-  python scripts/handoff.py --tokens tokens.json --project-dir . --yes --claude-md yes
-  python scripts/handoff.py --tokens tokens.json --dry-run
+  python3 scripts/handoff.py --palette wada-229 --strategy restrained --project-dir ./myapp
+  python3 scripts/handoff.py --tokens tokens.json --project-dir . --yes --claude-md yes
+  python3 scripts/handoff.py --tokens tokens.json --dry-run
 """
 from __future__ import annotations
 

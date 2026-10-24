@@ -40,13 +40,13 @@ A named kasane pattern that is not among the 33 (x-gasane, x no nioi, x no usuyo
 Exit codes: 0 results printed | 1 no match | 2 not in the data / bad input.
 
 Examples:
-  python scripts/search.py earthy three colours
-  python scripts/search.py "calm blue" --source-type wada_plate --limit 3 --json
-  python scripts/search.py ocean pastel
-  python scripts/search.py --near "#2a9d8f" --count 3
-  python scripts/search.py --hue teal,green --lightness dark --chroma muted
-  python scripts/search.py --id wada-229
-  python scripts/search.py japanese painting
+  python3 scripts/search.py earthy three colours
+  python3 scripts/search.py "calm blue" --source-type wada_plate --limit 3 --json
+  python3 scripts/search.py ocean pastel
+  python3 scripts/search.py --near "#2a9d8f" --count 3
+  python3 scripts/search.py --hue teal,green --lightness dark --chroma muted
+  python3 scripts/search.py --id wada-229
+  python3 scripts/search.py japanese painting
 """
 from __future__ import annotations
 

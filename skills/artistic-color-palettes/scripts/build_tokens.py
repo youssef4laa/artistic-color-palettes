@@ -23,9 +23,9 @@ Choices a user of this script should know:
   * Neutral ramp tint: the ground/palest tinted palette colour unless --neutral-from says otherwise.
 
 Examples:
-  python scripts/build_tokens.py --palette wada-229 --strategy restrained --out tokens.json
-  python scripts/build_tokens.py --hex "#9a2a2a,#1b2a4e,#f4eee0" --strategy committed --mode persuade
-  python scripts/build_tokens.py --palette paint-the-great-wave-off-kanagawa --accent "accent 5"
+  python3 scripts/build_tokens.py --palette wada-229 --strategy restrained --out tokens.json
+  python3 scripts/build_tokens.py --hex "#9a2a2a,#1b2a4e,#f4eee0" --strategy committed --mode persuade
+  python3 scripts/build_tokens.py --palette paint-the-great-wave-off-kanagawa --accent "accent 5"
 """
 from __future__ import annotations
 

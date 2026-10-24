@@ -57,10 +57,10 @@ Infer the mode; ask only if the surface is ambiguous.
 ### 3. Search the data
 
 ```bash
-python <skill>/scripts/search.py --count 3 --mood refined,cool --source-type wada_plate "slate blue"
-python <skill>/scripts/search.py pastel ocean --chroma muted   # everyday colour words are read as colours
-python <skill>/scripts/search.py --near "#2a9d8f" --limit 5    # palettes holding a colour close to a brand hex
-python <skill>/scripts/search.py --id wada-218                 # exact lookup; also ed-…, paint-…, kasane-…
+python3 <skill>/scripts/search.py --count 3 --mood refined,cool --source-type wada_plate "slate blue"
+python3 <skill>/scripts/search.py pastel ocean --chroma muted   # everyday colour words are read as colours
+python3 <skill>/scripts/search.py --near "#2a9d8f" --limit 5    # palettes holding a colour close to a brand hex
+python3 <skill>/scripts/search.py --id wada-218                 # exact lookup; also ed-…, paint-…, kasane-…
 ```
 
 - Translate the brief into colour words first ("a roastery at dusk" → `coffee dark`; "a children's sleep
@@ -80,7 +80,7 @@ python <skill>/scripts/search.py --id wada-218                 # exact lookup; a
 ### 4. Show 3–5 candidates applied, then wait
 
 ```bash
-python <skill>/scripts/preview.py --palette wada-218 --palette wada-139 --palette kasane-fuji \
+python3 <skill>/scripts/preview.py --palette wada-218 --palette wada-139 --palette kasane-fuji \
   --strategy restrained --mode operate --out palette-preview.html
 ```
 
@@ -96,7 +96,7 @@ pattern, painting or their own colours.
 ### 5. Build ramps and tokens
 
 ```bash
-python <skill>/scripts/build_tokens.py --palette wada-218 --strategy restrained --mode operate \
+python3 <skill>/scripts/build_tokens.py --palette wada-218 --strategy restrained --mode operate \
   --accent "Helvetia Blue" --neutral-from 3 --out <tmp>/tokens.json
 ```
 
@@ -114,7 +114,7 @@ product → `--action-style tinted` or `outline`; contrast "comfortably above th
 ### 6. Validate and fix contrast
 
 ```bash
-python <skill>/scripts/validate.py <tmp>/tokens.json --fix --in-place   # --all lists every measured pair
+python3 <skill>/scripts/validate.py <tmp>/tokens.json --fix --in-place   # --all lists every measured pair
 ```
 
 The **gate** is WCAG 2 (body 4.5:1, large text 3:1, meaningful non-text 3:1) and must pass; the **target**
@@ -135,8 +135,8 @@ mechanism (`prefers-color-scheme` plus a `[data-theme]` override).
 ### 8. Hand off
 
 ```bash
-python <skill>/scripts/handoff.py --tokens <tmp>/tokens.json --project-dir . --dry-run
-python <skill>/scripts/handoff.py --tokens <tmp>/tokens.json --project-dir . --claude-md yes --user-confirmed [--notes FILE]
+python3 <skill>/scripts/handoff.py --tokens <tmp>/tokens.json --project-dir . --dry-run
+python3 <skill>/scripts/handoff.py --tokens <tmp>/tokens.json --project-dir . --claude-md yes --user-confirmed [--notes FILE]
 ```
 
 This writes `design/palette.json` (source of truth), `design/tokens.css` (primitives, semantic `--color-*`,
@@ -203,7 +203,8 @@ pointer line, Theme Factory's custom-theme bullets) is *interop §4*.
 ## Scripts
 
 Python 3.10+, standard library only, no network, Windows paths and Japanese names handled. Run them by
-path from the project root (`<skill>` is this skill's folder); each has `--help`.
+path from the project root (`<skill>` is this skill's folder); each has `--help`. The commands use
+`python3`; on Windows, where that name is often missing, use `python` or `py`.
 
 - `scripts/search.py`: filter and rank the 436 palettes; `--id` exact lookup; `--json`; `--full` adds source URL, licence and score.
 - `scripts/preview.py`: one self-contained HTML page comparing 3–5 candidates (`--any-count` to override).
